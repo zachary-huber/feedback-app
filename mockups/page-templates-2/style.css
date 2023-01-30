@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color:linen; 
+    font-family: arial;
+}
+
+blockquote{
+    line-height: 0;
+    border-style: groove;
+    border-color: green;
+    background-color: white;
+}
+
+h1{
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+h2{
+    color: blue;
+}
+
+header{
+    text-align: center;
+}
+
+.column {
+    float: right;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px;
+}
+
+.middle{
+    background-color: white;
+}
+
+.button {
+    height: 40px;
+    width: 90px;
+}
+
+.center{
+    text-align: center;
+}
+
+.err_msg
+{
+	color:red; 
+	text-decoration:underline;
+}
+
+#dobDiv{
+    margin-left: 2.6em;
+}
+
+#emailDiv2{
+    margin-left: 5.6em;
+}
+
+#emailDiv{
+    margin-left: 1.9em;
+}
+
+#unameDiv{
+    margin-left: 3.5em;
+}
+
+#pswdDiv{
+    margin-left: 3.8em;
+}
+
+
+
+
+
