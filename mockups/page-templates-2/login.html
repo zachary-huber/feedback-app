@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Quick Feedback</title>
+	<link rel="stylesheet" text="text/css" href="style.css" />
+	<script type="text/javascript" src="validate.js"> </script>
+</head>
+
+<body>
+    <header>
+        <img src="feedback.png" alt="blog" width="400" height="200"/>
+    </header>
+
+    <section class="column">
+
+    </section>
+
+    <section class="column center">
+
+        <h1>Please log in to get started!</h1>
+        <form action="default.html" id="LogIn" method="post" >
+            <label id="msg_email" class="err_msg"></label><br/>
+            <div id="emailDiv">Email: <input type="text" name="email" size="30" /><br/></div>
+
+            <label id="msg_pswd" class="err_msg"></label><br/>
+            Password: <input type="password" name="pswd" size="30" /><br/>
+
+            <br/>
+            <input type="submit" value="Log In" />
+        </form>
+        <a href="signup.html"><button>Sign Up</button></a>
+
+    </section>
+
+	<script type="text/javascript" src="signup-r.js"></script>
+
+	<div id="display_info"></div>
+</body>
+
+</html>
