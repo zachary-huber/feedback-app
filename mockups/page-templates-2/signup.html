@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Sign Up</title>
+	<link rel="stylesheet" text="text/css" href="style.css" />
+	<script type="text/javascript" src="validate1.js"> </script>
+</head>
+
+<body>
+    <header>
+        <img src="feedback.png" alt="feedback" width="200" height="100"/>
+    </header>
+
+    <section class="column">
+
+    </section>
+
+    <section class="column center">
+
+        <h1>Create an account</h1>
+        <form id="SignUp" method="post" >
+            
+            <label id="msg_dob" class="err_msg"></label><br/>
+            <div id="dobDiv">Date of Birth: <input type="text" name="dob" size="30" /><br/></div>
+
+            <label id="msg_comp" class="err_msg"></label><br/>
+            <div id="compDiv">Company Name: <input type="text" name="comp" size="30" /><br/></div>
+
+            <label id="msg_email" class="err_msg"></label><br/>
+            <div id="emailDiv2">Email: <input type="text" name="email" size="30" /><br/></div>
+
+            <label id="msg_uname" class="err_msg"></label><br/>
+            <div id="unameDiv">Username: <input type="text" name="uname" size="30" /><br/></div>
+
+            <label id="msg_pswd" class="err_msg"></label><br/>
+            <div id="pswdDiv">Password: <input type="password" name="pswd" size="30" /><br/></div>
+
+            <label id="msg_pswdr" class="err_msg"></label><br/>
+            Confirm Password: <input type="password" name="pswdr" size="30" /><br/>
+            <br/>
+            
+            <p>Choose an Avatar:</p>
+                <label id="msg_avatar" class="err_msg"></label><br/>
+                <input type="radio" id="avatar" name="gender" value="male">
+                <label for="male"><img src="avatar1.png" alt="avatar1" width="50" height="50"/></label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female"><img src="avatar2.png" alt="avatar2" width="50" height="50"/></label><br>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other"><img src="avatar3.png" alt="avatar3" width="50" height="50"/></label><br>
+                
+                <input type="submit" value="Sign Up">
+        </form>
+        <p>
+            <a href="login.html">Back to Login</a>
+        </p>
+
+    </section>
+
+    <section class="column">
+
+    </section>
+
+	<script type="text/javascript" src="signup-r1.js"></script>
+
+	<div id="display_info"></div>
+</body>
+
+</html>
