@@ -1,3 +1,12 @@
+/*
+    Colour Palatte:
+    Shimmering Blush D88C9A
+    Light Orange F2D0A9
+    Almond F1E3D3
+    Opal 99C1B9
+    Purple Mountain Majesty 8E7DBE
+*/
+
 :root {
 --polka-bg-image:
     radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
@@ -11,7 +20,7 @@
     radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
     background-position: 8px 8px;
     background-size: 16px 16px;
-    background-color: rgb(204, 214, 255);
+    background-color: #F1E3D3;
 }
 
 * {
@@ -44,8 +53,9 @@ body {
     flex-direction: column;
 
     /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
-    /* border-radius: 16px; */
+    background: #99C1B9;
+    opacity: 0.85;
+    border-bottom-right-radius: 25px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(5px);
@@ -112,7 +122,7 @@ input[type="checkbox"] {
 }
 
 input[type="submit"] {
-    background-color: #f0f343;
+    background-color: #F2D0A9;
     cursor: pointer;
 }
 
@@ -122,7 +132,7 @@ label {
 
 #footer {
     padding: 15px;
-    background-color: #1b1b1b;
+    background-color: #8E7DBE;
     color: aliceblue;
     position: absolute;
     bottom: 0;
