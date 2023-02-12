@@ -1,0 +1,1 @@
+-- write a query to create a table named "users" with the following columns: user_id, first_name, last_name, email, password, created_at, updated_at, last_login, and is_admin. Make sure to set the appropriate data types, set user_id as the primary key, and set created_at and updated_at as NOT NULL

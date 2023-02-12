@@ -4,7 +4,7 @@ function Header() {
   return (
     <nav>
       <div class="logo"></div>
-      <h1>Feedback app</h1>
+      <h1>CommentCorner</h1>
     </nav>
   );
 }
