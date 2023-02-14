@@ -48,7 +48,7 @@ body {
     padding-bottom: 2.5rem;    /* Footer height */
 }
 
-.nav {
+nav {
     padding: 10px 25px;
     flex-direction: column;
 
