@@ -37,6 +37,7 @@ body {
    all:unset;
    /*background-image: url(../imgs/pexels-monstera-7794425.jpg);*/
    background-size: 1920px 1080px;
+   background-color: #F1E3D3;
 }
 
 #page-container {
@@ -53,7 +54,7 @@ nav {
     flex-direction: column;
 
     /* From https://css.glass */
-    background: #99C1B9;
+    background-image: linear-gradient(to bottom right, #99c1B9, #6b8781);
     opacity: 0.85;
     border-bottom-right-radius: 25px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -132,7 +133,8 @@ label {
 
 #footer {
     padding: 15px;
-    background-color: #8E7DBE;
+    background-image: linear-gradient(to bottom, #F1E3D3, #8E7DBE);
+    /*background-color: #8E7DBE;*/
     color: aliceblue;
     position: absolute;
     bottom: 0;
