@@ -4,6 +4,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Thanks from "./pages/Thanks"
 import './main.css';
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="Signup" element={<Signup />} />
           <Route path="Login" element={<Login />} />
+          <Route path="thanks" element={<Thanks />} />
         </Route>
       </Routes>
     </BrowserRouter>
