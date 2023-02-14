@@ -54,7 +54,7 @@ nav {
     flex-direction: column;
 
     /* From https://css.glass */
-    background-image: linear-gradient(to bottom right, #99c1B9, #6b8781);
+    background-image: linear-gradient(to bottom right, #99c1B9, #7A9A94);
     opacity: 0.85;
     border-bottom-right-radius: 25px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
