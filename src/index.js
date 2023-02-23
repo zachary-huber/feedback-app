@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import QRcode from "./pages/QRcode";
 import Survey from "./pages/Survey";
 import Thanks from "./pages/Thanks";
+//import dbtest from "./pages/dbtest";
 import './main.css';
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="QRcode" element={<QRcode />} />
           <Route path="Survey" element={<Survey />} />
           <Route path="Thanks" element={<Thanks />} />
+          {/* <Route path="dbtest" element={<dbtest />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
