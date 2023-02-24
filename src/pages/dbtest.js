@@ -20,3 +20,6 @@ res.send(result)
 app.listen(PORT, ()=>{
     console.log(`Server is running on ＄{PORT}`)
 })
+
+
+export default dbtest;

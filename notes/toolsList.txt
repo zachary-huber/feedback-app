@@ -1,0 +1,14 @@
+Programming languages
+- JS
+- HTML/css
+- SQL
+
+
+Client:
+- React (framework)
+
+Server:
+- Node.JS
+
+Database:
+- MySQL
