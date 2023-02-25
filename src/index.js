@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Layout from "./Layout";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -11,6 +12,10 @@ import Survey from "./pages/Survey";
 import Thanks from "./pages/Thanks";
 //import dbtest from "./pages/dbtest";
 import './main.css';
+
+import { Amplify } from 'aws-amplify';
+import config from './aws-exports';
+Amplify.configure(config);
 
 export default function App() {
   return (

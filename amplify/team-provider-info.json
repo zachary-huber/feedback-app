@@ -10,6 +10,14 @@
       "StackName": "amplify-feedbackapp-dev-20759",
       "StackId": "arn:aws:cloudformation:us-east-1:694806560061:stack/amplify-feedbackapp-dev-20759/59ea9a90-b41a-11ed-bddb-0aa499dc60e3",
       "AmplifyAppId": "d36jdwn4xehwvb"
+    },
+    "categories": {
+      "auth": {
+        "feedbackapp5a30c472": {}
+      },
+      "api": {
+        "feedbackapp": {}
+      }
     }
   }
 }
