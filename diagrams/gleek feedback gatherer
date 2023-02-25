@@ -1,0 +1,23 @@
+//Activity diagram for feedback gatherer
+
+Feedback Gatherer -Register-> Comment Corner
+Comment Corner -Store user information-> Database
+Database -Confirm storage-> Comment Corner
+Comment Corner -Request log in -> Feedback Gatherer
+Feedback Gatherer -Log in-> Comment Corner
+Comment Corner -Check user information-> Database
+Database -Confirm user information-> Comment Corner
+Comment Corner -Take user to landing page-> Feedback Gatherer
+Feedback Gatherer -Create survey-> Comment Corner
+Comment Corner -Store survey-> Database
+Database -Confirm storage-> Comment Corner
+Comment Corner -Confirm creation of survey with QR code-> Feedback Gatherer
+/alt Delete survey
+	Feedback Gatherer -Select survey to delete ->Comment Corner
+	Comment Corner -Delete selected survey->Database
+	Database -Confirm deletion->Comment Corner
+/alt View Statistics
+	Feedback Gatherer -Select a survey to view stats->Comment Corner
+	Comment Corner -Request stats-> Database
+	Database -Return stats->Comment Corner
+	Comment Corner -Show stats->Feedback Gatherer
