@@ -1,0 +1,11 @@
+//activity diagram for respondent
+
+
+Respondent-Scan QR Code->Comment Corner
+Comment Corner -Request survey->Database
+Database -Return survey -> Comment Corner
+Comment Corner -Take respondent to survey ->Respondent
+Respondent -Enter responses and submit -> Comment Corner
+Comment Corner -Store responses->Database
+Database -Confirm storage->Comment Corner
+Comment Corner -Confirm submission -> Respondent
