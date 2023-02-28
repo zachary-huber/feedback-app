@@ -27,10 +27,45 @@
 %%%%%%%%%%%%%%%%%%% BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Problem Definition}
+Develop a software that facilitates administration of surveys and feedback collection. The software must be fast, robust, and friendly.
+
+Marketing/Business Operations 
+
+Businesses want meaningful direct feedback on their products and services. Our project aims to provide a generalized solution to context-specific customer feedback monitoring without the need of onsite hardware to capture responses. In other terms, our app is a solution for conducting self-administered surveys.
+
+Our application is a simple tool for conducting self-administered surveys. Our users can log into their profiles to view customer feedback to improve their businesses. QR codes can be generated for wide distribution and quick access. SurveyMonkey (https://www.surveymonkey.com/) and QuestionPro (https://www.questionpro.com/) are comparable existing systems. Some benefits of our application are that the users can received unlimited number of responses for their surveys without cost and all features to create the surveys are free as well. Our application does not have many templates and complicated tools that may negatively impact loading time. Respondents do not need to create an account to respond to surveys. 
+
+
+    
 
 \section{Application Benefits}
 
 \section{Requirements Elicitation and Specification}
+Two types of users/roles: Feedback Gatherer / Respondent.
+
+\textbf{Feedback Gatherer}
+    
+    Register: Feedback gatherer creates an account by entering the required information
+    
+    Create Survey: Feedback gatherer creates a survey by entering questions and selecting type of responses
+    
+    View QR Code: Feedback gatherer views the generated QR code for the survey
+    
+    Delete Survey: Feedback gatherer deletes a survey that is no longer required
+    
+    View Statistics and responses: Feedback gatherer views statistics and responses of a selected survey
+    
+\textbf{Respondent}
+    
+    Scan QR Code: Respondent scans the QR code to view the survey
+    
+    Enter responses: Respondent enters responses to the survey questions
+    
+    Submit: Respondent submits responses to the survey questions
+
+The feedback gatherer can create a survey after registering. The feedback gatherer has the option to delete an existing survey or view statistics and responses to an existing survey. After creating a survey, the feedback gatherer can view the QR code to administer the created survey.
+
+The respondent can scan the QR code to take a survey created by a feedback gatherer. The respondent enters responses to the survey and submit the responses.
 
 \section{Top-level and Low-level Software Design}
 
