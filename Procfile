@@ -1,0 +1,1 @@
+web: gunicorn CS476P.wsgi --log-file -
