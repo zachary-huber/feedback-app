@@ -1,6 +1,8 @@
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf} 
+\documentclass[letterpaper, 12 pt, conference]{ieeeconf} 
 \IEEEoverridecommandlockouts                              
 \overrideIEEEmargins
+\usepackage{setspace}
+
 
 
 
@@ -9,7 +11,7 @@
 \usepackage{graphics} % for pdf, bitmapped graphics files
 %\usepackage{epsfig} % for postscript graphics files
 %\usepackage{mathptmx} % assumes new font selection scheme installed
-%\usepackage{times} % assumes new font selection scheme installed
+\usepackage{times} % assumes new font selection scheme installed
 %\usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
 \usepackage{graphicx}
@@ -20,30 +22,44 @@
 \pagestyle{empty}
 
 \input{titlepage}
-%%%%%%%%%%%%%%%%%%% ABSTRACT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
-\end{abstract}
+
 
 %%%%%%%%%%%%%%%%%%% BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\doublespacing 
+\onecolumn
+
 \section{Problem Definition}
-\subsection{outline the problem requirements and include the ap- plication domain and motivations of your project (1 page).}
-Develop a software that facilitates administration of surveys and feedback collection. The software must be fast, robust, and friendly.
+\subsection{outline the problem requirements and include the application domain and motivations of your project (1 page).}
 
-Marketing/Business Operations 
+Business and product owners want meaningful feedback from their customers to assist in their growth and success. It can be difficult to collect this information without onsite hardware and processing the data provided can be a timely task. As with many forms of customer engagement and ratings, customers can be unwilling to participate in traditional methods of feedback if too many steps are required, so the data collected will not be an accurate portrayal of opinions.
 
-Businesses want meaningful direct feedback on their products and services. Our project aims to provide a generalized solution to context-specific customer feedback monitoring without the need of onsite hardware to capture responses. In other terms, our app is a solution for conducting self-administered surveys.
-
-Our application is a simple tool for conducting self-administered surveys. Our users can log into their profiles to view customer feedback to improve their businesses. QR codes can be generated for wide distribution and quick access. SurveyMonkey (https://www.surveymonkey.com/) and QuestionPro (https://www.questionpro.com/) are comparable existing systems. Some benefits of our application are that the users can received unlimited number of responses for their surveys without cost and all features to create the surveys are free as well. Our application does not have many templates and complicated tools that may negatively impact loading time. Respondents do not need to create an account to respond to surveys. 
+In order to solve this problem, we have created a web application that allows for customers to provide their feedback in a simplistic way, and displays this information for businesses or owners in a way that it simple to understand without the need for onsite hardware. By allowing the customer to interact with a site that is not cumbersome, and can be done from the convenience of their smart phone, many more customers will be willing to submit their thoughts and opinions.
 
 
-    
 
+
+
+
+
+
+
+
+\newpage    
 \section{Application Benefits}
 \subsection{what are the benefits of your application when compared to existing systems. Choose two systems only and include their references (2 pages).}
 
+Our application is a simple tool for conducting self-administered surveys. Our users can log into their profiles to view customer feedback to improve their businesses. QR codes can be generated for wide distribution and quick access. SurveyMonkey (https://www.surveymonkey.com/) and QuestionPro (https://www.questionpro.com/) are comparable existing systems. Some benefits of our application are that the users can received unlimited number of responses for their surveys without cost and all features to create the surveys are free as well. Our application does not have many templates and complicated tools that may negatively impact loading time. Respondents do not need to create an account to respond to surveys. 
+
+\textbf{discuss survey monkey differences}
+
+\textbf{discuss questionpro differences}
+
+
+\newpage
 \section{Requirements Elicitation and Specification}
-\subsection{Functional requirements list (only the ones that you have imple- mented) for each user role (two exactly). Name each requirement and explain it briefly.}
+\subsection{Functional requirements list (only the ones that you have implemented) for each user role (two exactly). Name each requirement and explain it briefly.}
 \subsection{For each user role, provide the use case diagram with all the use cases and actors.}
 \subsection{Describe in detail two use cases using the activity diagram. Choose the most complex use cases.}
 \subsection{Software qualities: Correctness, Time-eﬀiciency and Robustness. In- clude at least two concrete examples for each quality for each user role. The sign-in and sign-up use cases are excluded from the examples.
@@ -78,8 +94,7 @@ The respondent can scan the QR code to take a survey created by a feedback gathe
 \section{Top-level and Low-level Software Design}
 \subsection{Provide the MVC architecture according to the selected Web frame- work. Also, describe at least three benefits of MVC for your application.}
 \subsection{Observer and Factory design patterns. Explain in detail the usability of these two patterns for your specific application. Include the complete class diagram for each pattern. Also provide the algorithms corresponding to the pattern’s important methods. For each class, provide the data types of the attributes and prototypes of the methods.}
-\subsection{Provide the class diagram of the whole system by incorporating the two design patterns.
-}
+\subsection{Provide the class diagram of the whole system by incorporating the two design patterns.}
 
 \section{Software Construction}
 \subsection{Submit the screenshot of the entire structure of the code within the web framework.}
@@ -98,7 +113,6 @@ The respondent can scan the QR code to take a survey created by a feedback gathe
 \subsection{Robustness testing using four test cases (screenshots of both inputs and out- puts).}
 \subsection{Time-eﬀiciency testing of two functions (with screenshots). Indicate the method you used to measure the time.}
 
-\section{Conclusion}
 
 
 \addtolength{\textheight}{-12cm}
@@ -111,17 +125,9 @@ The respondent can scan the QR code to take a survey created by a feedback gathe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Appendix}
-
-Appendixes should appear before the acknowledgment.
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
-
+\newpage
 
 
 \begin{thebibliography}{99}
