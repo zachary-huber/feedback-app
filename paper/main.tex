@@ -2,7 +2,14 @@
 \IEEEoverridecommandlockouts                              
 \overrideIEEEmargins
 \usepackage{setspace}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue,
+    }
 
+\urlstyle{same}
+\usepackage{wrapfig}
 
 
 
@@ -60,36 +67,83 @@ Our application is a simple tool for conducting self-administered surveys. Our u
 \newpage
 \section{Requirements Elicitation and Specification}
 \subsection{Functional requirements list (only the ones that you have implemented) for each user role (two exactly). Name each requirement and explain it briefly.}
-\subsection{For each user role, provide the use case diagram with all the use cases and actors.}
-\subsection{Describe in detail two use cases using the activity diagram. Choose the most complex use cases.}
-\subsection{Software qualities: Correctness, Time-eﬀiciency and Robustness. In- clude at least two concrete examples for each quality for each user role. The sign-in and sign-up use cases are excluded from the examples.
-}
-
-Two types of users/roles: Feedback Gatherer / Respondent.
 
 \textbf{Feedback Gatherer}
-    
-    Register: Feedback gatherer creates an account by entering the required information
-    
-    Create Survey: Feedback gatherer creates a survey by entering questions and selecting type of responses
-    
-    View QR Code: Feedback gatherer views the generated QR code for the survey
-    
-    Delete Survey: Feedback gatherer deletes a survey that is no longer required
-    
-    View Statistics and responses: Feedback gatherer views statistics and responses of a selected survey
-    
+\begin{enumerate}
+   \item \textbf{Register:} Feedback gatherer creates an account by entering the required information
+   \item \textbf{Create Survey:} Feedback gatherer creates a survey by entering questions and selecting type of responses
+   \item \textbf{View QR Code:} Feedback gatherer views the generated QR code for the survey
+   \item \textbf{Delete Survey:} Feedback gatherer deletes a survey that is no longer required
+   \item \textbf{View Statistics and Responses:} Feedback gatherer views statistics and responses of a selected survey
+\end{enumerate}
+
 \textbf{Respondent}
-    
-    Scan QR Code: Respondent scans the QR code to view the survey
-    
-    Enter responses: Respondent enters responses to the survey questions
-    
-    Submit: Respondent submits responses to the survey questions
+\begin{enumerate}
+   \item \textbf{Scan QR Code:} Respondent scans the QR code to view the survey
+   \item \textbf{Enter Responses:} Respondent enters responses to the survey questions
+   \item \textbf{Submit Response:} Respondent submits responses to the survey questions
+\end{enumerate}
 
-The feedback gatherer can create a survey after registering. The feedback gatherer has the option to delete an existing survey or view statistics and responses to an existing survey. After creating a survey, the feedback gatherer can view the QR code to administer the created survey.
+%\newpage
 
-The respondent can scan the QR code to take a survey created by a feedback gatherer. The respondent enters responses to the survey and submit the responses.
+\subsection{For each user role, provide the use case diagram with all the use cases and actors.}
+\includegraphics[width=0.70\textwidth]{caseDiagram.png}
+
+\newpage
+\subsection{Describe in detail two use cases using the activity diagram. Choose the most complex use cases.}
+\begin{enumerate}
+    \item The feedback gatherer can create a survey after registering. The feedback gatherer has the option to delete an existing survey or view statistics and responses to an existing survey. After creating a survey, the feedback gatherer can view the QR code to administer the created survey.
+    \includegraphics[width=0.70\textwidth]{feedbackGatherer.png}
+\newpage
+    \item The respondent can scan the QR code to take a survey created by a feedback gatherer. The respondent enters responses to the survey and submit the responses.
+    \includegraphics[width=0.70\textwidth]{respondent.png}
+\end{enumerate}
+
+\subsection{Software qualities: Correctness, Time-eﬀiciency and Robustness. Include at least two concrete examples for each quality for each user role. The sign-in and sign-up use cases are excluded from the examples.}
+
+\textbf{Correctness:}
+\begin{enumerate}
+    \item[] Feedback Gatherer:
+    \begin{itemize}
+        \item A survey correctly displays the questions and answer choices entered by the feedback gatherer during creation. 
+        \item Accurate statistics for a survey are shown to the feedback gatherer.
+    \end{itemize}
+    \item[] Respondent:
+    \begin{itemize}
+        \item Scanning the QR code takes the respondent to the correct survey.
+        \item Responses to a survey are saved correctly.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Time Efficiency:}
+\begin{enumerate}
+    \item[] Feedback Gatherer:
+    \begin{itemize}
+        \item  When a feedback gatherer creates the survey, the QR code for the survey is created in a timely manner.
+        \item When responses to a survey are submitted, they are available for view by the feedback gatherer in a timely manner.
+    \end{itemize}
+    \item[] Respondent:
+    \begin{itemize}
+        \item A respondent is taken to the survey in a timely manner after scanning a QR code for a survey.
+        \item A respondent is given a confirmation in a timely manner after submitting a survey.
+    \end{itemize}
+\end{enumerate}
+
+
+\textbf{Robustness:}
+\begin{enumerate}
+    \item[] Feedback Gatherer:
+    \begin{itemize}
+        \item  If a feedback gatherer attempts to submit a blank survey, submission is denied with a warning.
+        \item If a feedback gatherer forgets to select a type of answer to a question, submission is denied with a warning.
+    \end{itemize}
+    \item[] Respondent:
+    \begin{itemize}
+        \item If a respondent attempts to submit a survey with one or more unanswered questions, submission is denied and unanswered questions are marked.
+        \item If a respondent attempts to exit the survey after answering one or more questions, a warning is shown.
+    \end{itemize}
+\end{enumerate}
+
 
 \section{Top-level and Low-level Software Design}
 \subsection{Provide the MVC architecture according to the selected Web frame- work. Also, describe at least three benefits of MVC for your application.}
@@ -101,12 +155,37 @@ The respondent can scan the QR code to take a survey created by a feedback gathe
 \subsection{Deployment diagram regarding the hardware configuration of the code. Indicate the supported Web browsers, the application/Web servers and the database solution.}
 \subsection{Screenshots of all table contents of the system data.}
 \subsection{GitHub link of the entire program. All students must contribute equally to the programming part. The commit log of each student will be checked within GitHub. Website builders, such as Wordpress, are not allowed.}
-\subsection{Link of your Web-based application. The application should be acces- sible online and runnable.}
+\url{https://github.com/zachary-huber/feedback-app}
+
+\subsection{Link of your Web-based application. The application should be accessible online and runnable.}
+\url{https://www.viewnote.app/}
 
 \section{Technical Documentation}
 \subsection{List of programming languages.}
+\begin{enumerate}
+   \item Javascript
+   \item HTML
+   \item CSS
+   \item PHP
+\end{enumerate}
+
 \subsection{List of reused algorithms and programs. Include their sources.}
+\begin{enumerate}
+   \item thing
+   \begin{description}
+     \item description
+   \end{description}
+   \item thing
+\end{enumerate}
+
 \subsection{List of software tools and environments. Provide briefly their benefits specifically for your application.}
+\begin{enumerate}
+   \item React
+   \begin{description}
+     \item description
+   \end{description}
+   \item Django
+\end{enumerate}
 
 \section{Acceptance Testing: select test cases for both user roles. The sign-in and sign-up are excluded from testing.}
 \subsection{Correctness testing using four test cases (screenshots of both inputs and out- puts).}
