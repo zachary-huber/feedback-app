@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+  <div>
+    <!-- Replace 'Survey Name' with name of survey -->
+    <h2>Survey Name:</h2>
+
+    <div>
+        <!-- Replace 'HelloWorld' with URL to survey -->
+        <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=300x300" width="150" height="150" />
+    </div>
+
+    <a href="{% url 'landingpage' %}">Back to landing</a>
+
+  </div>
+
+</body>
+
+</html>
+
+{% endblock content %}
