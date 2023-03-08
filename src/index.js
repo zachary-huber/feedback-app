@@ -13,9 +13,10 @@ import Thanks from "./pages/Thanks";
 //import dbtest from "./pages/dbtest";
 import './main.css';
 
+/*
 import { Amplify } from 'aws-amplify';
 import config from './aws-exports';
-Amplify.configure(config);
+Amplify.configure(config);*/
 
 export default function App() {
   return (
