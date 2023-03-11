@@ -306,6 +306,7 @@ function submitResponses(){
 }
 
 testJSON = [{"formTitle":"Form1Test"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"text field test"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"Did you have a good day?"},{"inputID":"inputContainer2","fieldType":"true-false","fieldNameQuestion":"true false"},{"inputID":"inputContainer3","fieldType":"text-field","fieldNameQuestion":""}]
+testJSON = [{"formTitle":"-Name your form here!-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
 
 
 // addResponseField();
