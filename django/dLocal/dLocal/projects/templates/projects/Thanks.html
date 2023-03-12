@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<body>
+
+                <img src="{% static 'images/thankyou.png' %}" width="800" height="400">
+
+
+                <div class="auth__alternative">
+                    <p>Do you want to create your own survey?</p>
+                    <a href="{% url 'signup' %}">Sign Up</a>
+                  </div>
+
+</body>
+
+
+</html>
+
+
+{% endblock content %}

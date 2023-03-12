@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<main class="home">
+
+
+           <h2>Welcome back {{request.user.first_name}}!</h2>
+
+            <div class="dev">
+         
+                <div class="dev__profile">
+                  <img class="avatar" src="{{profile.profile_image.url}}" alt="image" width="100" height="100" />
+                </div>
+                <div class="dev__skills">
+                </div>
+ 
+            </div>
+
+        </div>
+      </div>
+    </section>
+
+    
+  </main>
+
+
+{% endblock content %}

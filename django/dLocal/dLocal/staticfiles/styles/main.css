@@ -1,0 +1,178 @@
+/*
+    Colour Palatte:
+    Shimmering Blush D88C9A
+    Light Orange F2D0A9
+    Almond F1E3D3
+    Opal 99C1B9
+    Purple Mountain Majesty 8E7DBE
+*/
+
+.logorsign {
+    font-size: 100px;
+    padding-left: 20px;
+    padding-top: 35px;
+    text-align: right;
+}
+
+
+
+.container {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.text {
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.pageTitle{
+    font-size: 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    
+    background-color: #2ce025;
+}
+
+:root {
+    --polka-bg-image:
+    radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
+    --polka-bg-position: 8px 8px;
+    --polka-bg-size: 16px 16px;
+    --polka-bg-color: rgb(204, 214, 255);
+}
+
+.polka {
+    background-image:
+    radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
+    background-position: 8px 8px;
+    background-size: 16px 16px;
+    background-color: #F1E3D3;
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+* ::selection {
+    background-color: #2ce025;
+    color: rgb(24, 24, 24);
+}
+
+body {
+    all: unset;
+    /*background-image: url(../imgs/pexels-monstera-7794425.jpg);*/
+    background-size: 1920px 1080px;
+    background-color: #F1E3D3;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;
+    /* Footer height */
+}
+
+nav {
+    padding: 10px 25px;
+    flex-direction: column;
+
+    /* From https://css.glass */
+    background-image: linear-gradient(to bottom right, #99c1B9, #7A9A94);
+    opacity: 0.85;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+
+}
+
+.card {
+    width: 600px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.callToAction {
+    text-align: center;
+    padding: 3%;
+}
+
+button {
+    font-size: 30px;
+    font-weight: 700;
+    background-color: #f0f343;
+    color: rgb(24, 24, 24);
+    border: solid 1px rgb(24, 24, 24);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+input {
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(245, 245, 245);
+    border: solid 1px rgb(121, 121, 121);
+    width: 50%;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    background-color: #F2D0A9;
+    cursor: pointer;
+}
+
+label {
+    margin: auto;
+}
+
+#footer {
+    padding: 15px;
+    background-image: linear-gradient(to bottom, #F1E3D3, #8E7DBE);
+    /*background-color: #8E7DBE;*/
+    color: aliceblue;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
