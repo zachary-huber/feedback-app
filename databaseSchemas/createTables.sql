@@ -8,7 +8,8 @@ CREATE TABLE users (
     updated_at DATETIME NOT NULL,
     last_login DATETIME,
     is_admin BOOLEAN NOT NULL,
-    PRIMARY KEY (user_id)
+    PRIMARY KEY (user_id),
+    user_avatar VARCHAR(255) NOT NULL
 );
 
 
@@ -20,7 +21,7 @@ CREATE TABLE forms (
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
     is_active BOOLEAN NOT NULL,
-    form_html TEXT NOT NULL,
+    form_JSON TEXT NOT NULL,
     PRIMARY KEY (form_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -30,7 +31,7 @@ CREATE TABLE responses (
     response_id INT NOT NULL AUTO_INCREMENT,
     form_id INT NOT NULL,
     user_id INT NOT NULL,
-    response_html TEXT NOT NULL,
+    response_JSON TEXT NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
     PRIMARY KEY (response_id),
