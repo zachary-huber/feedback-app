@@ -7,6 +7,19 @@
     Purple Mountain Majesty 8E7DBE
 */
 
+:root {
+    --polka-bg-image:
+        radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
+    --polka-bg-position: 8px 8px;
+    --polka-bg-size: 16px 16px;
+    --polka-bg-color: rgb(204, 214, 255);
+    --shimmer: #D88C9A; 
+    --orange: #F2D0A9; 
+    --almond: #F1E3D3; 
+    --opal: #99C1B9;
+    --purple: #8E7DBE;
+}
+
 .linky:link,
 .linky:visited {
     background-color: green;
@@ -43,20 +56,12 @@ img {
     padding-top: 20px;
 }
 
-:root {
-    --polka-bg-image:
-        radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
-    --polka-bg-position: 8px 8px;
-    --polka-bg-size: 16px 16px;
-    --polka-bg-color: rgb(204, 214, 255);
-}
-
 .polka {
     background-image:
-        radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
+    radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
     background-position: 8px 8px;
     background-size: 16px 16px;
-    background-color: #F1E3D3;
+    background-color: var(--almond);
 }
 
 * {
@@ -65,15 +70,15 @@ img {
 }
 
 * ::selection {
-    background-color: #2ce025;
-    color: rgb(24, 24, 24);
+    background-color: #e6ff0a;
+    color: rgb(39, 39, 39);
 }
 
 body {
     all: unset;
     /*background-image: url(../imgs/pexels-monstera-7794425.jpg);*/
     background-size: 1920px 1080px;
-    background-color: #F1E3D3;
+    background-color: var(--almond);
 }
 
 #page-container {
@@ -91,7 +96,7 @@ nav {
     flex-direction: column;
 
     /* From https://css.glass */
-    background-image: linear-gradient(to bottom right, #99c1B9, #7A9A94);
+    background-image: linear-gradient(to bottom right, var(--opal), #7A9A94);
     opacity: 0.85;
     border-bottom-right-radius: 25px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -160,7 +165,7 @@ input[type="checkbox"] {
 }
 
 input[type="submit"] {
-    background-color: #F2D0A9;
+    background-color: var(--orange);
     cursor: pointer;
 }
 
@@ -171,8 +176,8 @@ label {
 #footer {
     position: absolute;
     padding: 15px;
-    background-image: linear-gradient(to bottom, #F1E3D3, #8E7DBE);
-    /*background-color: #8E7DBE;*/
+    background-image: linear-gradient(to bottom, var(--almond), var(--purple));
+    /*background-color: var(--purple);*/
     color: aliceblue;
     /* position: relative; */
     bottom: 0;
