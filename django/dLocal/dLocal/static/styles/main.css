@@ -169,11 +169,12 @@ label {
 }
 
 #footer {
+    position: absolute;
     padding: 15px;
     background-image: linear-gradient(to bottom, #F1E3D3, #8E7DBE);
     /*background-color: #8E7DBE;*/
     color: aliceblue;
-    position: relative;
+    /* position: relative; */
     bottom: 0;
     width: 100%;
 }
