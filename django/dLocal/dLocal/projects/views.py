@@ -5,6 +5,11 @@ from django.urls import path
 from .models import Project
 from django.contrib.auth.decorators import login_required
 
+import json
+from django.http import JsonResponse
+from .models import Form
+from django.contrib import messages
+
 # Create your views here.
 
 def home(request):
@@ -58,3 +63,30 @@ def formEditor(request):
     # else:
     #     render(request, 'projects/formEditor.html')
     #     return HttpResponse('Form submitted')
+    
+    
+@login_required
+def saveFormEditor(request):   
+    page = 'saveFormEditor'
+    if request.user.is_authenticated:
+        return redirect('profiles')
+    
+
+    if request.method =='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, 'Username does not exist')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('profiles')
+        else:
+            messages.error(request, 'Username or password is incorrect')
+
+    return render(request, 'users/login_register.html') #########
