@@ -50,11 +50,12 @@ class Tag(models.Model):
 
 class Form(models.Model):
     id = models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=False)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True,blank=True)
     def __str__(self):
         return self.title
+    
 
 class Response(models.Model):
     form = models.ForeignKey(Form, on_delete=models.CASCADE)

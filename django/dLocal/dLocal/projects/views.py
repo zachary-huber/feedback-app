@@ -67,26 +67,16 @@ def formEditor(request):
     
 @login_required
 def saveFormEditor(request):   
-    page = 'saveFormEditor'
+    # return render(request, 'projects/saveFormEditor.html')
     if request.user.is_authenticated:
-        return redirect('profiles')
-    
-
-    if request.method =='POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        try:
-            user = User.objects.get(username=username)
-        except:
-            messages.error(request, 'Username does not exist')
-
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            return redirect('profiles')
+        if request.method == 'POST':
+            json_data = request.body.decode('utf-8')  # decode the request body
+            user_id = request.user.id
+            
+            form = Form(id=1, description=json_data, title="newForm")  # create a Form object with the JSON data
+            form.save()  # save the Form object to the database
+            return JsonResponse({'status': 'ok'})
         else:
-            messages.error(request, 'Username or password is incorrect')
-
-    return render(request, 'users/login_register.html') #########
+            return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})

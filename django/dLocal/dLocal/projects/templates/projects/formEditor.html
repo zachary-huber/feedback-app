@@ -32,9 +32,10 @@
                 </div>
             </form>
             <div class="form-buttons">
+              {% csrf_token %}
                 <button onclick="addElement()" id="add-element">Add Element</button>
                 <br>
-                <button onclick="saveForm()" id="save-form">Save Form</button>
+                <button onclick="sendData()" id="save-form">Save Form</button>
                 <button onclick="submitResponses()" id="save-form">Submit Responses</button>
             </div>
             

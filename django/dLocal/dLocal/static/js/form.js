@@ -305,27 +305,50 @@ function submitResponses(){
     return responseJSON;
 }
 
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  
+const csrftoken = getCookie('csrftoken');
 
 function sendData() {
-    var myVariable = saveForm();
-    $.ajax({
-        url: '/saveFormEditor/',
-        type: 'POST',
-        data: {'myVariable': myVariable},
-        success: function(response) {
-            // Handle the response from the server
-            console.log(response);
-        },
-        error: function(response) {
-            // Handle the error
-            console.log(response);
-        }
+    var myVariable = "saveForm()";
+    fetch('/../saveFormEditor/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+    },
+    body: JSON.stringify(myVariable)
+    })
+    .then(response => {
+    // Handle the response from the Django view
+    // console.log(response);
+    })
+    .catch(error => {
+    // Handle any errors that occur during the HTTP request
+    // console.error(error);
     });
+
 }
 
 
-testJSON = [{"formTitle":"Form1Test"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"text field test"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"Did you have a good day?"},{"inputID":"inputContainer2","fieldType":"true-false","fieldNameQuestion":"true false"},{"inputID":"inputContainer3","fieldType":"text-field","fieldNameQuestion":""}]
-testJSON = [{"formTitle":"-Name your form here!-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
+
+
+// testJSON = [{"formTitle":"Form1Test"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"text field test"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"Did you have a good day?"},{"inputID":"inputContainer2","fieldType":"true-false","fieldNameQuestion":"true false"},{"inputID":"inputContainer3","fieldType":"text-field","fieldNameQuestion":""}]
+// testJSON = [{"formTitle":"-Name your form here!-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
 
 
 // addResponseField();
