@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <h1 id="pageTitle">Form editor</h1>
+        <div class="form-container">
+            <h2 contenteditable="true" id="formTitle">-Name your form here!-</h2>
+            <div class="formHeaders">
+                <h2>response type</h2>
+                <h2>your question</h2>
+            </div>
+            <!-- <div class="formHeaders">
+                <p>(Choose a response type)</p>
+                <p>(Enter your inquiry)</p>
+            </div> -->
+
+            <form id="form" class="editingForm">
+                <!-- inside here is a bunch of form elements -->
+                <div id="form-elements">
+                    
+                </div>
+            </form>
+            <div class="form-buttons">
+                <button onclick="addElement()" id="add-element">Add Element</button>
+                <button onclick="saveForm()" id="save-form">Save Form</button>
+                <button onclick="submitResponses()" id="save-form">Submit Responses</button>
+            </div>
+            
+            <br>
+            <p id="formJSON" class="formJSON">Form JSON: </p>
+            <p id="responseJSON" class="formJSON">Response JSON: </p>
+        </div>
+        <script src="../../static/form.js" async defer></script>
+    </body>
+</html>
+
+
+{% endblock content %}

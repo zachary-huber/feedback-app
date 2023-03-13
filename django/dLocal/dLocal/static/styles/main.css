@@ -9,7 +9,7 @@
 
 :root {
     --polka-bg-image:
-        radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
+    radial-gradient(rgb(62, 117, 168) 10%, transparent 10%);
     --polka-bg-position: 8px 8px;
     --polka-bg-size: 16px 16px;
     --polka-bg-color: rgb(204, 214, 255);
@@ -174,12 +174,13 @@ label {
 }
 
 #footer {
-    position: absolute;
+    /* position: absolute; */
+    margin-top: 60vh;
     padding: 15px;
     background-image: linear-gradient(to bottom, var(--almond), var(--purple));
     /*background-color: var(--purple);*/
     color: aliceblue;
     /* position: relative; */
-    bottom: 0;
+    /* bottom: 0; */
     width: 100%;
 }

@@ -3,7 +3,12 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.urls import path
 from .models import Project
+from .models import Form
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
+import json
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -40,3 +45,21 @@ def thanks(request):
     return render(request, 'projects/Thanks.html')
 
 
+@login_required
+def formEditor(request):
+    return render(request, 'projects/formEditor.html')
+    # if request.method == 'POST':
+        
+    #     my_variable = request.POST.get('myVariable', None)
+    #     user_id = request.user.id
+    #     try:
+    #         json_data = json.loads(my_variable)
+    #     except ValueError:
+    #         return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
+    #     form = Form(user_id=user_id, json_data=json_data)
+    #     form.save()
+    #     return JsonResponse({'status': 'ok'})
+    #     return HttpResponse('Form submitted')
+    # else:
+    #     render(request, 'projects/formEditor.html')
+    #     return HttpResponse('Form submitted')

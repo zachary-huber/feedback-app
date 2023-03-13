@@ -7,20 +7,18 @@
 
            <h2>Welcome back {{request.user.first_name}}!</h2>
 
-            <div class="dev">
-         
-                <div class="dev__profile">
-                  <img class="avatar" src="{{profile.profile_image.url}}" alt="image" width="100" height="100" />
+           <a href="{% url 'formEditor' %}">+ Create New Survey</a>
+                <div>
+                    <div class="dropdown">
+                        survey name
+                        <b class="dropbtn"> &#x22EE;</b>
+                        <div class="dropdown-content">
+                          <a href="#">Delete</a>
+                          <a href="#">Get QR</a>
+                        </div>
+                      </div>
                 </div>
-                <div class="dev__skills">
-                </div>
- 
-            </div>
-
-        </div>
-      </div>
-    </section>
-
+          </div>
     
   </main>
 

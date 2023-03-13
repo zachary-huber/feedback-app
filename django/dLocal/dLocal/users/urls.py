@@ -10,4 +10,5 @@ urlpatterns = [
     path('profiles/<str:pk>/', views.userProfile, name="user-profile"),
 
     path('account/', views.userAccount, name="account"),   
+    # path('formEditor/', views.formEditor, name="formEditor"),   
 ]

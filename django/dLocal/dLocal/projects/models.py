@@ -48,18 +48,44 @@ class Tag(models.Model):
 
 
 
+# class Form(models.Model):
+#     id = models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
+#     created = models.DateTimeField(auto_now_add=True)
+#     title = models.CharField(max_length=200)
+#     description = models.TextField(null=True,blank=True)
+#     def __str__(self):
+#         return self.title
+
 class Form(models.Model):
-    id = models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
-    created = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=200)
-    description = models.TextField(null=True,blank=True)
-    def __str__(self):
-        return self.title
+    form_id = models.AutoField(primary_key=True)
+    user_id = models.IntegerField()
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    form_JSON = models.TextField()
+
+    class Meta:
+        db_table = 'forms'
+
 
 class Response(models.Model):
-    form = models.ForeignKey(Form, on_delete=models.CASCADE)
-    id = models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
-    created = models.DateTimeField(auto_now_add=True)
-    response_text = models.TextField(null=True,blank=True)
-    def __str__(self):
-        return self.id
+    response_id = models.AutoField(primary_key=True)
+    form_id = models.ForeignKey('Form', on_delete=models.CASCADE)
+    user_id = models.IntegerField()
+    response_JSON = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        db_table = 'responses'
+
+
+# class Response(models.Model):
+#     form = models.ForeignKey(Form, on_delete=models.CASCADE)
+#     id = models.UUIDField(default=uuid.uuid4,unique=True,primary_key=True,editable=False)
+#     created = models.DateTimeField(auto_now_add=True)
+#     response_text = models.TextField(null=True,blank=True)
+#     def __str__(self):
+#         return self.id
