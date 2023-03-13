@@ -109,6 +109,16 @@ button {
     border: none;
 }
 
+#add-element {
+    margin: 0 30%;
+    background-color: rgba(233, 233, 233, 0.781);
+    color: rgb(49, 49, 49);
+    border: 4px dotted rgb(68, 68, 68);
+    border-radius: 5px;
+    width: 30%;
+    
+}
+
 .deleteButton:hover {
     background-color: rgb(184, 31, 31);
 }

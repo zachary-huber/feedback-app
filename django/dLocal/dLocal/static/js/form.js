@@ -77,11 +77,11 @@ function removeParentElement(IDtoBeRemoved) {
 }
 
 
-function saveForm(){
-    var form = document.getElementById("form");
-    var formHTML = form.innerHTML;
-    localStorage.setItem("form", formHTML);
-}
+// function saveForm(){
+//     var form = document.getElementById("form");
+//     var formHTML = form.innerHTML;
+//     localStorage.setItem("form", formHTML);
+// }
 
 
 function loadForm(){
@@ -311,4 +311,5 @@ testJSON = [{"formTitle":"-Name your form here!-"},{"inputID":"inputContainer0",
 
 // addResponseField();
 // loadFormEditor(testJSON);
-loadFormUser(testJSON);
+
+// loadFormUser(testJSON);
