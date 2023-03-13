@@ -22,8 +22,11 @@
 
 .linky:link,
 .linky:visited {
-    background-color: green;
+    background-color: rgb(65, 185, 65);
+    border: solid 1px black;
     color: white;
+    font-size: larger;
+    font-weight: bold;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
@@ -31,12 +34,19 @@
     margin-top: 25px;
     position: relative;
     display: flex;
-    left: 1000px;
+    /* right: 150px; */
 }
 
 .linky:hover,
 .linky:active {
-    background-color: blue;
+    background-color: rgb(105, 202, 105);
+    
+}
+
+.logorsign {
+    position: absolute;
+    right: 100px;
+    /* text-align: right; */
 }
 
 .container {
@@ -51,9 +61,15 @@ img {
 }
 
 .text {
-    font-size: 20px;
+    color: white;
+    
     padding-left: 20px;
     padding-top: 20px;
+}
+
+.text h1 {
+    margin-top: 5px;
+    font-size: 30px;
 }
 
 .polka {
@@ -174,8 +190,8 @@ label {
 }
 
 #footer {
-    position: absolute;
     padding: 15px;
+    margin-top: 60vh;
     background-image: linear-gradient(to bottom, var(--almond), var(--purple));
     /*background-color: var(--purple);*/
     color: aliceblue;
