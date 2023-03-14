@@ -324,7 +324,7 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 function sendData() {
-    var myVariable = "saveForm()";
+    var myVariable = saveForm();
     fetch('/../saveFormEditor/', {
     method: 'POST',
     headers: {

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 import json
 from django.http import JsonResponse
-from .models import Form
+from .models import Forms
 from django.contrib import messages
 
 # Create your views here.
@@ -73,7 +73,10 @@ def saveFormEditor(request):
             json_data = request.body.decode('utf-8')  # decode the request body
             user_id = request.user.id
             
-            form = Form(id=1, description=json_data, title="newForm")  # create a Form object with the JSON data
+            # get the form title from the JSON data
+            newFormTitle = list(json.loads(json_data)[0].values())[0]
+            
+            form = Forms(form_json=json_data, user_id=user_id, title=newFormTitle)  # create a Form object with the JSON data
             form.save()  # save the Form object to the database
             return JsonResponse({'status': 'ok'})
         else:

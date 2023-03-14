@@ -32,3 +32,18 @@ class Skill(models.Model):
 
     def __str__(self):
         return str(self.name)
+    
+    
+class Forms(models.Model):
+    form_id = models.AutoField(primary_key=True)
+    user_id = models.IntegerField(blank=True, null=True) #models.ForeignKey('Users', models.DO_NOTHING, blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    description = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+    is_active = models.IntegerField(blank=True, null=True)
+    form_json = models.TextField(db_column='form_JSON', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'forms'
