@@ -10,6 +10,8 @@ from django.http import JsonResponse
 from .models import Forms
 from django.contrib import messages
 
+from users.models import User
+
 # Create your views here.
 
 def home(request):

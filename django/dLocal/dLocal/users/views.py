@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm
 
-from .models import Forms
+from projects.models import Forms
 
 # Create your views here.
 
@@ -65,11 +65,32 @@ def registerUser(request):
     return render(request, 'users/login_register.html', context)
 
 
+def user_forms(request, idd):
+    # Retrieve the user object based on the user_id
+    user_id = User.objects.get(id=idd)
+
+    # Retrieve all forms associated with the user
+    user_forms = Forms.objects.filter(user_id=idd)
+
+    form_ids = []
+    form_titles = []
+    for user_form in user_forms:
+        form_ids.append(user_form.form_id)
+        form_titles.append(user_form.title)
+        
+    forms = zip(form_ids, form_titles)
+    print(forms)
+    # get form title from user_forms
+    
+    # passing the user_id, user_forms, form_ids, and form_titles to the profiles.html template
+    return render(request, 'users/profiles.html',  {'id': user_id, 'forms': forms})
+
+
 def profiles(request):
     profiles = Profile.objects.all()
     context = {'profiles':profiles}
-    
-    # Forms = Forms.objects.get(user_id=user_id)
+    user_id = request.user.id
+    return user_forms(request, user_id)
     
     return render(request, 'users/profiles.html', context)
 

@@ -12,6 +12,16 @@
                     <div class="dropdown">
                         survey name
                         <b class="dropbtn"> &#x22EE;</b>
+                        {% comment %} user_forms {% endcomment %}
+                        <ul class="user_forms">                
+                          {% for form_id, form_title in forms %}
+                            <a class="form_link" href="{% url 'survey' form_id  %}">
+                              {% comment %} <li>Form ID: {{ form_id }} - Form Title: {{ form_title }}</li> {% endcomment %}
+                              <li>{{ form_title }}</li>
+                            </a>
+                          {% endfor %}
+                        </ul>
+
                         <div class="dropdown-content">
                           <a href="#">Delete</a>
                           <a href="#">Get QR</a>

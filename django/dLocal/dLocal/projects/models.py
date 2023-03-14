@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 from users.models import Profile
-
+from users.models import User
 # Create your models here.
 
 class Project(models.Model):
@@ -79,7 +79,8 @@ class ProjectsForm(models.Model):
         
 class Forms(models.Model):
     form_id = models.AutoField(primary_key=True)
-    user_id = models.IntegerField(blank=True, null=True) #models.ForeignKey('Users', models.DO_NOTHING, blank=True, null=True)
+    user_id = models.IntegerField(blank=True, null=True) 
+    # user_id = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(blank=True, null=True)
