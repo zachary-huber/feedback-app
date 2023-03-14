@@ -69,7 +69,7 @@ def profiles(request):
     profiles = Profile.objects.all()
     context = {'profiles':profiles}
     
-    Forms = Forms.objects.get(user_id=user_id)
+    # Forms = Forms.objects.get(user_id=user_id)
     
     return render(request, 'users/profiles.html', context)
 
