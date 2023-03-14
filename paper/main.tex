@@ -38,35 +38,45 @@
 \onecolumn
 
 \section{Problem Definition}
-\subsection{outline the problem requirements and include the application domain and motivations of your project (1 page).}
-
+\subsection{Outline the problem requirements and include the application domain and motivations of your project (1 page).}
+\linebreak
 Business and product owners want meaningful feedback from their customers to assist in their growth and success. It can be difficult to collect this information without onsite hardware and processing the data provided can be a timely task. As with many forms of customer engagement and ratings, customers can be unwilling to participate in traditional methods of feedback if too many steps are required, so the data collected will not be an accurate portrayal of opinions.
+\newline
+
 
 In order to solve this problem, we have created a web application that allows for customers to provide their feedback in a simplistic way, and displays this information for businesses or owners in a way that it simple to understand without the need for onsite hardware. By allowing the customer to interact with a site that is not cumbersome, and can be done from the convenience of their smart phone, many more customers will be willing to submit their thoughts and opinions.
+\newline
 
+Our web application is created specifically to benefit business owners or managers who want to monitor the opinions of their clientele in a simplistic way. Based on our previous experiences, these surveys for clientele are often annoying to complete or difficult to find. Often they require typing in a website manually from the back of a receipt which is not worth most people's time. By creating a website that consolidates everything to a simple QR code that can be scanned by a smart phone either posted at the physical location to be rated, or printed on a receipt to be done after the fact. 
+\newline
 
+By making surveys more accessible and simple to fill out, more people will be willing to participate, making survey results more accurate. As of now, most people who leave reviews or fill out surveys have extreme opinions which may sway the results in one way or another, so by creating this application, we have hopes that more people will share their opinions making the results much more well rounded.
 
-
-
-
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage    
 \section{Application Benefits}
-\subsection{what are the benefits of your application when compared to existing systems. Choose two systems only and include their references (2 pages).}
+\subsection{What are the benefits of your application when compared to existing systems. Choose two systems only and include their references (2 pages).}
+\linebreak
+Our application is a simple tool for conducting self-administered surveys. Our users can log into their profiles to view customer feedback to improve their businesses. QR codes can be generated for wide distribution and quick access. SurveyMonkey (\url{https://www.surveymonkey.com/}) and QuestionPro (\url{https://www.questionpro.com/}) are comparable existing systems. Some benefits of our application are that the users can received unlimited number of responses for their surveys without cost and all features to create the surveys are free as well. Our application does not have many templates and complicated tools that may negatively impact loading time. Respondents do not need to create an account to respond to surveys. 
+\hfill \break
 
-Our application is a simple tool for conducting self-administered surveys. Our users can log into their profiles to view customer feedback to improve their businesses. QR codes can be generated for wide distribution and quick access. SurveyMonkey (https://www.surveymonkey.com/) and QuestionPro (https://www.questionpro.com/) are comparable existing systems. Some benefits of our application are that the users can received unlimited number of responses for their surveys without cost and all features to create the surveys are free as well. Our application does not have many templates and complicated tools that may negatively impact loading time. Respondents do not need to create an account to respond to surveys. 
+\subsubsection*{Survey Monkey}
 
-\textbf{discuss survey monkey differences}
+Survey Monkey is one of the more popular survey platforms as of now. It has lots of different options for different groups of people who may be interested in gaining an insight into people's opinions. With its wide array of available options, it is what many people think of when someone mentions a survey website.
+\newline
 
-\textbf{discuss questionpro differences}
+Survey Monkey's website is very overwhelming to look at on first glance, but after a bit of digging you are able to find a bit of information on the packages available. In the past, they have had a pretty large amount of features for free users, but now their free package is very limited. Currently, their free package only allows for unlimited surveys, but with a restriction of 10 questions each, and only allows for a limited amount of responses. This means that if you want to get information with a large group of people, you would have to create multiples of the same surveys and compile the data together manually.
 
+\hfill \break
+\subsubsection*{QuestionPro}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
 \section{Requirements Elicitation and Specification}
 \subsection{Functional requirements list (only the ones that you have implemented) for each user role (two exactly). Name each requirement and explain it briefly.}
+\linebreak
 
 \textbf{Feedback Gatherer}
 \begin{enumerate}
@@ -76,6 +86,8 @@ Our application is a simple tool for conducting self-administered surveys. Our u
    \item \textbf{Delete Survey:} Feedback gatherer deletes a survey that is no longer required
    \item \textbf{View Statistics and Responses:} Feedback gatherer views statistics and responses of a selected survey
 \end{enumerate}
+\newline 
+\hfill \break
 
 \textbf{Respondent}
 \begin{enumerate}
@@ -84,23 +96,34 @@ Our application is a simple tool for conducting self-administered surveys. Our u
    \item \textbf{Submit Response:} Respondent submits responses to the survey questions
 \end{enumerate}
 
-%\newpage
+\newpage
 
 \subsection{For each user role, provide the use case diagram with all the use cases and actors.}
+\hfill \break
+
 \includegraphics[width=0.70\textwidth]{caseDiagram.png}
 
 \newpage
 \subsection{Describe in detail two use cases using the activity diagram. Choose the most complex use cases.}
 \begin{enumerate}
     \item The feedback gatherer can create a survey after registering. The feedback gatherer has the option to delete an existing survey or view statistics and responses to an existing survey. After creating a survey, the feedback gatherer can view the QR code to administer the created survey.
+    \hfill \break
+
     \includegraphics[width=0.70\textwidth]{feedbackGatherer.png}
 \newpage
     \item The respondent can scan the QR code to take a survey created by a feedback gatherer. The respondent enters responses to the survey and submit the responses.
+    \linebreak
+    \hfill \break
     \includegraphics[width=0.70\textwidth]{respondent.png}
+    
+
 \end{enumerate}
+\hfill \break
+
 
 \subsection{Software qualities: Correctness, Time-eﬀiciency and Robustness. Include at least two concrete examples for each quality for each user role. The sign-in and sign-up use cases are excluded from the examples.}
-
+\linebreak
+    \hfill \break
 \textbf{Correctness:}
 \begin{enumerate}
     \item[] Feedback Gatherer:
@@ -114,6 +137,7 @@ Our application is a simple tool for conducting self-administered surveys. Our u
         \item Responses to a survey are saved correctly.
     \end{itemize}
 \end{enumerate}
+\hfill \break
 
 \textbf{Time Efficiency:}
 \begin{enumerate}
@@ -129,6 +153,7 @@ Our application is a simple tool for conducting self-administered surveys. Our u
     \end{itemize}
 \end{enumerate}
 
+\hfill \break
 
 \textbf{Robustness:}
 \begin{enumerate}
@@ -144,21 +169,49 @@ Our application is a simple tool for conducting self-administered surveys. Our u
     \end{itemize}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Top-level and Low-level Software Design}
 \subsection{Provide the MVC architecture according to the selected Web frame- work. Also, describe at least three benefits of MVC for your application.}
+\linebreak
+    \hfill \break
+    
 \subsection{Observer and Factory design patterns. Explain in detail the usability of these two patterns for your specific application. Include the complete class diagram for each pattern. Also provide the algorithms corresponding to the pattern’s important methods. For each class, provide the data types of the attributes and prototypes of the methods.}
+\linebreak
+    \hfill \break
+    
 \subsection{Provide the class diagram of the whole system by incorporating the two design patterns.}
+\linebreak
+    \hfill \break
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Software Construction}
 \subsection{Submit the screenshot of the entire structure of the code within the web framework.}
+\linebreak
+    \hfill \break
+    
 \subsection{Deployment diagram regarding the hardware configuration of the code. Indicate the supported Web browsers, the application/Web servers and the database solution.}
+\linebreak
+    \hfill \break
+    
 \subsection{Screenshots of all table contents of the system data.}
+\linebreak
+    \hfill \break
+    
 \subsection{GitHub link of the entire program. All students must contribute equally to the programming part. The commit log of each student will be checked within GitHub. Website builders, such as Wordpress, are not allowed.}
+\linebreak
+    \hfill \break
 \url{https://github.com/zachary-huber/feedback-app}
+\hfill \break
 
 \subsection{Link of your Web-based application. The application should be accessible online and runnable.}
+\linebreak
+    \hfill \break
 \url{https://www.viewnote.app/}
+\hfill \break
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Technical Documentation}
 \subsection{List of programming languages.}
@@ -187,9 +240,11 @@ Our application is a simple tool for conducting self-administered surveys. Our u
    \item Django
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Acceptance Testing: select test cases for both user roles. The sign-in and sign-up are excluded from testing.}
-\subsection{Correctness testing using four test cases (screenshots of both inputs and out- puts).}
-\subsection{Robustness testing using four test cases (screenshots of both inputs and out- puts).}
+\subsection{Correctness testing using four test cases (screenshots of both inputs and outputs).}
+\subsection{Robustness testing using four test cases (screenshots of both inputs and outputs).}
 \subsection{Time-eﬀiciency testing of two functions (with screenshots). Indicate the method you used to measure the time.}
 
 
@@ -209,15 +264,15 @@ Our application is a simple tool for conducting self-administered surveys. Our u
 \newpage
 
 
-\begin{thebibliography}{99}
+%\begin{thebibliography}{99}
 
-\bibitem{young-1964} G. O. Young, Synthetic structure of industrial plastics (Book style with paper title and editor), 	in Plastics, 2nd ed. vol. 3, J. Peters, Ed.  New York: McGraw-Hill, 1964, pp. 15Ð64.
-\bibitem{chen-1993} W.-K. Chen, Linear Networks and Systems (Book style).	Belmont, CA: Wadsworth, 1993, pp. 123Ð135.
-\bibitem{poor-1985} H. Poor, An Introduction to Signal Detection and Estimation.   New York: Springer-Verlag, 1985, ch. 4.
+%\bibitem{young-1964} G. O. Young, Synthetic structure of industrial plastics (Book style with paper title and editor), 	in Plastics, 2nd ed. vol. 3, J. Peters, Ed.  New York: McGraw-Hill, 1964, pp. 15Ð64.
+%\bibitem{chen-1993} W.-K. Chen, Linear Networks and Systems (Book style).	Belmont, CA: Wadsworth, 1993, pp. 123Ð135.
+%\bibitem{poor-1985} H. Poor, An Introduction to Signal Detection and Estimation.   New York: Springer-Verlag, 1985, ch. 4.
 
-\bibitem{uofr} "Home", University of Regina, 2022. [Online]. Available: https://www.uregina.ca/. [Accessed: 06- Apr- 2022].
+%\bibitem{uofr} "Home", University of Regina, 2022. [Online]. Available: https://www.uregina.ca/. [Accessed: 06- Apr- 2022].
 
-\end{thebibliography}
+%\end{thebibliography}
 
 
 
