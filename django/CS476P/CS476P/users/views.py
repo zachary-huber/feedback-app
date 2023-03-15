@@ -87,6 +87,12 @@ def userAccount(request):
     return render(request, 'users/account.html', context)
 
 
+def tests(request):
+    tests = Test.objects.all()
+    context = {'tests':tests}
+    return render (request, 'users/test.html', context)
+
+
 @login_required
 def formEditor(request):
     return render(request, 'users/formEditor.html')
