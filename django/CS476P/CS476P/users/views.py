@@ -7,6 +7,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CustomUserCreationForm
 
+import json
+from django.http import JsonResponse
+from .models import Forms
+from django.contrib import messages
+
+
+
 # Create your views here.
 
 def loginUser(request):
@@ -79,3 +86,42 @@ def userAccount(request):
     context = {'profile':profile}
     return render(request, 'users/account.html', context)
 
+
+@login_required
+def formEditor(request):
+    return render(request, 'users/formEditor.html')
+    # if request.method == 'POST':
+        
+    #     my_variable = request.POST.get('myVariable', None)
+    #     user_id = request.user.id
+    #     try:
+    #         json_data = json.loads(my_variable)
+    #     except ValueError:
+    #         return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
+    #     form = Form(user_id=user_id, json_data=json_data)
+    #     form.save()
+    #     return JsonResponse({'status': 'ok'})
+    #     return HttpResponse('Form submitted')
+    # else:
+    #     render(request, 'projects/formEditor.html')
+    #     return HttpResponse('Form submitted')
+    
+    
+@login_required
+def saveFormEditor(request):   
+    # return render(request, 'projects/saveFormEditor.html')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            json_data = request.body.decode('utf-8')  # decode the request body
+            user_id = request.user.id
+            
+            # get the form title from the JSON data
+            newFormTitle = list(json.loads(json_data)[0].values())[0]
+            
+            form = Forms(form_json=json_data, user_id=user_id, title=newFormTitle)  # create a Form object with the JSON data
+            form.save()  # save the Form object to the database
+            return JsonResponse({'status': 'ok'})
+        else:
+            return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})
