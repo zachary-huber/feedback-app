@@ -4,21 +4,33 @@
 {% load static %}
 <main class="home">
 
-  <div>
-            <h2>Welcome back {{request.user.first_name}}!</h2>
-        
-            <a href="{% url 'landingpage' %}">+ Create New Survey</a>
+           <div>
+            {% for profile in profiles %}
+            <h2>Welcome back {{profile.name}}!</h2>
+          
+            <a href="{% url 'formEditor' %}">+ Create New Survey</a>
+
+           
                 <div>
-                    <div class="dropdown">
+
+            <a href="{% url 'pastsurvey' profile.id %}">View Past Surveys</a>
+            
+            {% endfor %}
+
+           
+                    <!-- <div class="dropdown">
                         survey name
                         <b class="dropbtn"> &#x22EE;</b>
                         <div class="dropdown-content">
                           <a href="#">Delete</a>
                           <a href="#">Get QR</a>
                         </div>
-                      </div>
+                      </div> -->
                 </div>
+
+
           </div>
+        
 
     
   </main>
