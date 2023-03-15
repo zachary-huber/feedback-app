@@ -10,4 +10,9 @@ urlpatterns = [
     path('profiles/<str:pk>/', views.userProfile, name="user-profile"),
 
     path('account/', views.userAccount, name="account"),   
+    path('test/', views.tests, name="test123"),
+    #path('createsurvey/', views.saveFormEditor, name='form'),
+    path('formEditor/', views.formEditor, name="formEditor"),
+    #path('createsurvey/', views.saveFormEditor, name="saveFormEditor"),
+    path('saveformeditor/', views.saveFormEditor, name="saveFormEditor"),
 ]
