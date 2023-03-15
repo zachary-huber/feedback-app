@@ -1,9 +1,52 @@
 {% extends 'main.html' %}
 
-
 {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'styles/formEditor.css' %}">>
+    </head>
+    <body>
+        <h1 id="pageTitle">Survey page</h1>
+        <div class="form-container">
+            <h2 contenteditable="false" id="formTitle">-Name your form here!-</h2>
+            <div class="formHeaders">
+                <h2>Quesiton/Field</h2>
+                <h2>Input</h2>
+            </div>
+            <!-- <div class="formHeaders">
+                <p>(Choose a response type)</p>
+                <p>(Enter your inquiry)</p>
+            </div> -->
 
+            <form id="form" class="editingForm">
+                <!-- inside here is a bunch of form elements -->
+                <div id="form-elements">
+                    
+                </div>
+            </form>
+            <div class="form-buttons">
+              {% csrf_token %}
+                <button onclick="addElement()" id="add-element">Add Element</button>
+                <br>
+                <button onclick="sendData()" id="save-form">Save Form</button>
+                <button onclick="submitResponses()" id="save-form">Submit Responses</button>
+            </div>
+            
+            <br>
+            <p id="formJSON" class="formJSON">Form JSON: </p>
+            <p id="responseJSON" class="formJSON">Response JSON: </p>
+            <p id="formJSON"></p>
+        </div>
+        <script type="text/javascript" src="{% static 'JS/survey.js' %}"></script>
+    </body>
+</html>
 
-<h1>survey page</h1>
 
 {% endblock content %}

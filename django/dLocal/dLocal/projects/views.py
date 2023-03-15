@@ -11,6 +11,7 @@ from .models import Forms
 from django.contrib import messages
 
 from users.models import User
+from projects.models import Forms
 
 # Create your views here.
 
@@ -42,6 +43,15 @@ def signup(request):
 
 def survey(request):
     return render(request, 'projects/Survey.html')
+
+def survey(request, form_id):
+    # form = Forms.objects.get(id=form_id)
+    # form_JSON = form.form_json
+    # form_titles = form.title
+    
+    # Do any additional processing or rendering here
+    # return render(request, 'survey.html', {'form': form})
+    return render(request, 'projects/Survey.html', {'form_id': form_id})
 
 def thanks(request):
     return render(request, 'projects/Thanks.html')

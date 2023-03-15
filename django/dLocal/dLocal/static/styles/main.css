@@ -205,7 +205,7 @@ a {
     /* round borders */
     /* border-radius: 6px; */
     border: black 1px solid;
-    background-color: rgb(182, 73, 255);
+    background-color: rgb(100, 73, 255);
     color: white;
     font-weight: bold;
     width: 400px;
@@ -215,7 +215,7 @@ a {
     /* red border */
     /* outline: 2px solid black; */
     color: black;
-    background-color: rgb(233, 186, 255);
+    background-color: rgb(193, 186, 255);
 }
 
 #footer {
