@@ -35,13 +35,15 @@
               {% csrf_token %}
                 <button onclick="addElement()" id="add-element">Add field (+) </button>
                 <br>
-                <button onclick="sendData()" id="save-form">Save Form</button>
+                <a class="form_link" href="{% url 'profile' %}">
+                  <button onclick="sendData()" id="save-form">Save Form</button>
+                </a>
                 {% comment %} <button onclick="submitResponses()" id="save-form">Submit Responses</button> {% endcomment %}
             </div>
             
             <br>
-            <p id="formJSON" class="formJSON">Form JSON: </p>
-            <p id="responseJSON" class="formJSON">Response JSON: </p>
+            <p style="visibility: hidden;" id="formJSON" class="formJSON">Form JSON: </p>
+            {% comment %} <p id="responseJSON" class="formJSON">Response JSON: </p> {% endcomment %}
         </div>
         <script type="text/javascript" src="{% static 'JS/form.js' %}"></script>
     </body>

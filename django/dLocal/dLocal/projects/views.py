@@ -12,6 +12,7 @@ from django.contrib import messages
 
 from users.models import User
 from projects.models import Forms
+from projects.models import Responses
 
 # Create your views here.
 
@@ -47,7 +48,7 @@ def survey(request):
 def survey(request, form_id):
     form = Forms.objects.get(form_id=form_id)
     form_JSON = form.form_json
-    print(form_JSON)
+    # print(form_JSON)
     # form_titles = form.title
     
     # Do any additional processing or rendering here
@@ -96,3 +97,25 @@ def saveFormEditor(request):
             return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
     else:
         return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})
+    
+    
+    
+def saveResponses(request):   
+    # return render(request, 'projects/saveFormEditor.html')
+    # if request.user.is_authenticated:
+    if request.method == 'POST':
+        json_data = request.body.decode('utf-8')  # decode the request body
+        # user_id = request.user.id
+        
+        print(json_data)
+        
+        # get the form title from the JSON data
+        newFormTitle = list(json.loads(json_data)[0].values())[0]
+        
+        response = Responses(response_json=json_data, user='1')  # create a Form object with the JSON data
+        response.save()  # save the Form object to the database
+        return JsonResponse({'status': 'ok'})
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+    # else:
+    #     return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})

@@ -300,8 +300,8 @@ function submitResponses(){
             responseValue: responseValue
         });
     }
-    console.log(responseJSON);
-    document.getElementById("responseJSON").innerHTML = "Response JSON: <br>" + JSON.stringify(responseJSON);
+    // console.log(responseJSON);
+    // document.getElementById("responseJSON").innerHTML = "Response JSON: <br>" + JSON.stringify(responseJSON);
     return responseJSON;
 }
 
@@ -324,13 +324,16 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 function sendData() {
-    var myVariable = saveForm();
-    fetch('/../saveFormEditor/', {
+    console.log("sendData() called");
+
+    var myVariable = submitResponses();
+    fetch('/../saveResponses/', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': csrftoken
     },
+    // need to pass JSON, dateTime, and formID !!!!!!!!!!!!!
     body: JSON.stringify(myVariable)
     })
     .then(response => {
@@ -348,12 +351,12 @@ function sendData() {
 
 // wait for the DOM to finish loading
 document.addEventListener('DOMContentLoaded', (event) => {
-    console.log("this should show up");
+    // console.log("this should show up");
 
     var testJSON = document.getElementById("formJSON").innerHTML;
 
     // console.log(testJSON);
-    console.log(JSON.parse(testJSON));
+    // console.log(JSON.parse(testJSON));
 
     // testJSON = [{"formTitle":"aaaa-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
     // testJSON = [{"formTitle":"asdasd11212"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"wwww"},{"inputID":"inputContainer1","fieldType":"text-field","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"zzzz"}]
