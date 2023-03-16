@@ -349,11 +349,16 @@ function sendData() {
 // wait for the DOM to finish loading
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log("this should show up");
-    console.log(document.getElementById("formJSON").innerHTML);
-    testJSON = [{"formTitle":"aaaa-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
-    testJSON = [{"formTitle":"asdasd11212"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"wwww"},{"inputID":"inputContainer1","fieldType":"text-field","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"zzzz"}]
 
-    loadFormUser(testJSON);
+    var testJSON = document.getElementById("formJSON").innerHTML;
+
+    // console.log(testJSON);
+    console.log(JSON.parse(testJSON));
+
+    // testJSON = [{"formTitle":"aaaa-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
+    // testJSON = [{"formTitle":"asdasd11212"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"wwww"},{"inputID":"inputContainer1","fieldType":"text-field","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"zzzz"}]
+
+    loadFormUser(JSON.parse(testJSON));
   })
     
 
