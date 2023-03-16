@@ -10,10 +10,13 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'styles/formEditor.css' %}">>
+        <link rel="stylesheet" href="{% static 'styles/formEditor.css' %}">
+        <style>
+            
+        </style>
     </head>
     <body>
-        <p id="formJSON">{{ form_JSON }}</p>
+        <p id="formJSON" style="visibility: hidden;" class="formJSON">{{ form_JSON }}</p>
 
         <h1 id="pageTitle">Survey page</h1>
         <div class="form-container">
@@ -42,9 +45,9 @@
             </div>
             
             <br>
-            <p id="formJSON" class="formJSON">Form JSON: </p>
+            {% comment %} <p id="formJSON" class="formJSON">Form JSON: </p>
             <p id="responseJSON" class="formJSON">Response JSON: </p>
-            
+             {% endcomment %}
         </div>
         {% comment %} delay script until page loads fully {% endcomment %}
         <script type="text/javascript" src="{% static 'JS/survey.js' %}"></script>
