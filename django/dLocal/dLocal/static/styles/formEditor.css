@@ -99,6 +99,7 @@ button {
 
 .deleteButton {
     padding: 4px;
+    padding-bottom: 8px;
     margin: 5px;
     background-color: rgb(255, 59, 59);
     color: white;
@@ -107,6 +108,10 @@ button {
     height: 25px;
     width: 25px;
     border: none;
+}
+
+.deleteButtonHidden {
+    visibility: hidden;
 }
 
 #add-element {
