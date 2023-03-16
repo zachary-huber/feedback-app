@@ -346,8 +346,19 @@ function sendData() {
 
 
 
+// wait for the DOM to finish loading
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log("this should show up");
+    console.log(document.getElementById("formJSON").innerHTML);
+    testJSON = [{"formTitle":"aaaa-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
+    testJSON = [{"formTitle":"asdasd11212"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"wwww"},{"inputID":"inputContainer1","fieldType":"text-field","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"zzzz"}]
 
-testJSON = [{"formTitle":"Form1Test"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"text field test"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"Did you have a good day?"},{"inputID":"inputContainer2","fieldType":"true-false","fieldNameQuestion":"true false"},{"inputID":"inputContainer3","fieldType":"text-field","fieldNameQuestion":""}]
+    loadFormUser(testJSON);
+  })
+    
+
+testJSON = document.getElementById("formJSON").innerHTML;
+
 // testJSON = [{"formTitle":"-Name your form here!-"},{"inputID":"inputContainer0","fieldType":"text-field","fieldNameQuestion":"asdasda"},{"inputID":"inputContainer1","fieldType":"attitude-scale","fieldNameQuestion":"weee"},{"inputID":"inputContainer2","fieldType":"text-field","fieldNameQuestion":"tttt"},{"inputID":"inputContainer3","fieldType":"true-false","fieldNameQuestion":"aaaa"},{"inputID":"inputContainer4","fieldType":"text-field","fieldNameQuestion":"aaaa"}]
 
 // testJSON = document.getElementById("formJSON").innerHTML;
@@ -355,4 +366,3 @@ testJSON = [{"formTitle":"Form1Test"},{"inputID":"inputContainer0","fieldType":"
 // addResponseField();
 // loadFormEditor(testJSON);
 
-loadFormUser(testJSON);

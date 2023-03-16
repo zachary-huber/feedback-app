@@ -45,13 +45,14 @@ def survey(request):
     return render(request, 'projects/Survey.html')
 
 def survey(request, form_id):
-    # form = Forms.objects.get(id=form_id)
-    # form_JSON = form.form_json
+    form = Forms.objects.get(form_id=form_id)
+    form_JSON = form.form_json
+    print(form_JSON)
     # form_titles = form.title
     
     # Do any additional processing or rendering here
     # return render(request, 'survey.html', {'form': form})
-    return render(request, 'projects/Survey.html', {'form_id': form_id})
+    return render(request, 'projects/Survey.html', {'form_id': form_id, 'form_JSON': form_JSON})
 
 def thanks(request):
     return render(request, 'projects/Thanks.html')
