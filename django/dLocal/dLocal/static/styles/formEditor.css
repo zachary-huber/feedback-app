@@ -152,17 +152,22 @@ button {
 .responseElement {
     margin: 5px;
     margin-bottom: 15px;
-    padding: 12px;
+    padding: 40px 20px ;
+    padding-top: 15px;
     background-color: rgb(231, 242, 255);
     border-radius: 3px;
+}
+
+.responseHeading {
+    margin-bottom: 30px;
 }
 
 
 .responseElement input {
     margin: 5px;
     padding: 5px;
-    height: 15px;
-    
+    height: 35px;
+    width: 98%;
     background-color: rgb(255, 255, 255);
     border-radius: 3px;
     border: 1px solid rgb(12, 12, 12);
