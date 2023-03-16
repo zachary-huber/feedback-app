@@ -14,4 +14,5 @@ urlpatterns = [
     path('thanks/', views.thanks, name="thanks"),
     path('formEditor/', views.formEditor, name="formEditor"),
     path('saveFormEditor/', views.saveFormEditor, name="saveFormEditor"),
+    path('saveResponses/', views.saveResponses, name="saveResponses"),
 ]

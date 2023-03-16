@@ -324,9 +324,21 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 function sendData() {
-    console.log("sendData() called");
+    // console.log("sendData() called");
 
+    formID = document.getElementById("formNumber").innerHTML;
     var myVariable = submitResponses();
+    myVariable = JSON.stringify(myVariable);
+
+    // get data time with native JS
+    var dateTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    console.log(dateTime);
+
+    // put data into JSON
+    var bodyData = JSON.stringify({ "dateTime": dateTime, "formID": formID, "responseJSON": myVariable });
+
+    console.log(bodyData);
+    
     fetch('/../saveResponses/', {
     method: 'POST',
     headers: {
@@ -334,7 +346,9 @@ function sendData() {
         'X-CSRFToken': csrftoken
     },
     // need to pass JSON, dateTime, and formID !!!!!!!!!!!!!
-    body: JSON.stringify(myVariable)
+    
+
+    body: bodyData
     })
     .then(response => {
     // Handle the response from the Django view
@@ -347,7 +361,7 @@ function sendData() {
 
 }
 
-
+// console.log("this should show up");
 
 // wait for the DOM to finish loading
 document.addEventListener('DOMContentLoaded', (event) => {

@@ -107,12 +107,22 @@ def saveResponses(request):
         json_data = request.body.decode('utf-8')  # decode the request body
         # user_id = request.user.id
         
-        print(json_data)
+        json_data = list(json.loads(json_data).values())
+        
+        responseDate = json_data[0]
+        responseFormID = json_data[1]
+        responseJSON = json_data[2]
+        
+        # print the 3 vars above
+        print(responseJSON)
+        print(responseDate)
+        print(responseFormID)
         
         # get the form title from the JSON data
-        newFormTitle = list(json.loads(json_data)[0].values())[0]
         
-        response = Responses(response_json=json_data, user='1')  # create a Form object with the JSON data
+        # newFormTitle = list(json.loads(json_data)[0].values())[0]
+        
+        response = Responses(response_json=responseJSON, created_at=responseDate, form_id=responseFormID)  # create a Form object with the JSON data
         response.save()  # save the Form object to the database
         return JsonResponse({'status': 'ok'})
     else:
