@@ -18,6 +18,8 @@
                             <a class="form_link" href="{% url 'survey' form_id  %}">
                               {% comment %} <li>Form ID: {{ form_id }} - Form Title: {{ form_title }}</li> {% endcomment %}
                               <li>{{ form_title }}</li>
+                              {% comment %} <p>{{ request.build_absolute_uri }}{% url 'survey' form_id %}</p> {% endcomment %}
+                              <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data={{ request.build_absolute_uri }}{% url 'survey' form_id %}&amp;size=300x300" width="150" height="150" />
                             </a>
                           {% endfor %}
                         </ul>
