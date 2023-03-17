@@ -231,27 +231,27 @@ function addResponseElement(inputType, questionHeading){
         case "attitude-scale":
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "attitude-scale" + responseInputs);
-            newInput.setAttribute("value", "1");
+            newInput.setAttribute("value", "Disagree");
             newInput.setAttribute("checked", "checked");
             newDiv.appendChild(newInput);
             var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "1");
+            newLabel.setAttribute("for", "Disagree");
             newLabel.innerHTML = "1 = Disagree";
             newDiv.appendChild(newLabel);
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "attitude-scale" + responseInputs);
-            newInput.setAttribute("value", "2");
+            newInput.setAttribute("value", "Neutral");
             newDiv.appendChild(newInput);
             var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "2");
+            newLabel.setAttribute("for", "Neutral");
             newLabel.innerHTML = "2 = Neutral";
             newDiv.appendChild(newLabel);
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "attitude-scale" + responseInputs);
-            newInput.setAttribute("value", "3");
+            newInput.setAttribute("value", "Agree");
             newDiv.appendChild(newInput);
             var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "3");
+            newLabel.setAttribute("for", "Agree");
             newLabel.innerHTML = "3 = Agree";
             newDiv.appendChild(newLabel);
             break;
@@ -292,9 +292,9 @@ function submitResponses(){
         var responseHeading = child.children[0].innerHTML;
         var responseInput = child.children[1];
         var responseValue = responseInput.value;
-        if(responseInput.type == "radio"){
-            responseValue = responseInput.checked;
-        }
+        // if(responseInput.type == "radio"){
+        //     responseValue = responseInput.checked;
+        // }
         responseJSON.push({
             responseHeading: responseHeading,
             responseValue: responseValue
