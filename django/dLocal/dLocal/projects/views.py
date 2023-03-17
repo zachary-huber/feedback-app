@@ -158,9 +158,12 @@ def results(request, form_id):
     # convert a dictionary into a dataframe
     
     df = pd.DataFrame(response_dict)
-    # print(df)
     
-    results_table = df.to_html()
+    # remove index column
+    df =  df.reset_index(drop=True)
+    print(df)
+    
+    results_table = df.to_html(index=False)
     # print(results_table)
    
     
