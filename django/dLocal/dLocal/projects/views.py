@@ -146,7 +146,10 @@ def results(request, form_id):
     response_dict = {}
     for item in newList:
         heading = item['responseHeading']
-        value = item['responseValue'].strip()
+        value = item['responseValue']
+        if isinstance(value, str):
+            value = item['responseValue'].strip()
+        
         if heading not in response_dict:
             response_dict[heading] = [value]
         else: # value not in response_dict[heading]:

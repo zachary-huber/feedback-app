@@ -299,6 +299,8 @@ function submitResponses(){
             responseHeading: responseHeading,
             responseValue: responseValue
         });
+
+        console.log(typeof responseValue);
     }
     // console.log(responseJSON);
     // document.getElementById("responseJSON").innerHTML = "Response JSON: <br>" + JSON.stringify(responseJSON);
