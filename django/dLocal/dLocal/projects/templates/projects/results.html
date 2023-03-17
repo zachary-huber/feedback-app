@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/results_table.css' %}">
+    </head>
+    <body>
+
+        <h1>results page</h1>
+        <div>{{ results_table|safe}}</div>
+    </body>
+</html>
+
+{% endblock content %}
