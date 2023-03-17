@@ -14,9 +14,8 @@ from users.models import User
 from projects.models import Forms
 from projects.models import Responses
 
-
 import pandas as pd
-# Create your views here.
+
 
 def home(request):
     # projects = Project.objects.all()
@@ -50,11 +49,6 @@ def survey(request):
 def survey(request, form_id):
     form = Forms.objects.get(form_id=form_id)
     form_JSON = form.form_json
-    # print(form_JSON)
-    # form_titles = form.title
-    
-    # Do any additional processing or rendering here
-    # return render(request, 'survey.html', {'form': form})
     return render(request, 'projects/Survey.html', {'form_id': form_id, 'form_JSON': form_JSON})
 
 def thanks(request):
@@ -64,21 +58,6 @@ def thanks(request):
 @login_required
 def formEditor(request):
     return render(request, 'projects/formEditor.html')
-    # if request.method == 'POST':
-        
-    #     my_variable = request.POST.get('myVariable', None)
-    #     user_id = request.user.id
-    #     try:
-    #         json_data = json.loads(my_variable)
-    #     except ValueError:
-    #         return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
-    #     form = Form(user_id=user_id, json_data=json_data)
-    #     form.save()
-    #     return JsonResponse({'status': 'ok'})
-    #     return HttpResponse('Form submitted')
-    # else:
-    #     render(request, 'projects/formEditor.html')
-    #     return HttpResponse('Form submitted')
     
     
 @login_required
@@ -100,7 +79,8 @@ def saveFormEditor(request):
     else:
         return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})
     
-    
+
+
 def saveResponses(request):   
     # return render(request, 'projects/saveFormEditor.html')
     # if request.user.is_authenticated:
@@ -119,60 +99,54 @@ def saveResponses(request):
         print(responseDate)
         print(responseFormID)
         
-        # get the form title from the JSON data
-        
-        # newFormTitle = list(json.loads(json_data)[0].values())[0]
-        
         response = Responses(response_json=responseJSON, created_at=responseDate, form_id=responseFormID)  # create a Form object with the JSON data
         response.save()  # save the Form object to the database
         return JsonResponse({'status': 'ok'})
     else:
         return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
-    # else:
-    #     return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})
     
-    
+
+@login_required
 def results(request, form_id):
-    results = Responses.objects.filter(form_id=form_id)
-    
-    # Create a list of all the response JSONs
-    newList = []
-    for responseObject in results:
-        response_list = json.loads(responseObject.response_json)
-        for list in response_list:
-            newList.append(list)
+    if request.user.is_authenticated:
+        current_user = request.user.id
         
-    # Create a dictionary of unique responseHeadings and values
-    response_dict = {}
-    for item in newList:
-        heading = item['responseHeading']
-        value = item['responseValue']
-        if isinstance(value, str):
-            value = item['responseValue'].strip()
+        form = Forms.objects.get(form_id=form_id)
+        if form.user_id != current_user:
+            messages.error(request, 'You do not have permission to view this page')
+            return redirect('home')
         
-        if heading not in response_dict:
-            response_dict[heading] = [value]
-        else: # value not in response_dict[heading]:
-            response_dict[heading].append(value)
-
-    # Print the resulting dictionary
-    # print(response_dict)
+        results = Responses.objects.filter(form_id=form_id)
+        
+        # Create a list of all the response JSONs
+        newList = []
+        for responseObject in results:
+            response_list = json.loads(responseObject.response_json)
+            for list in response_list:
+                newList.append(list)
+            
+        # Create a dictionary of unique responseHeadings and values
+        response_dict = {}
+        for item in newList:
+            heading = item['responseHeading']
+            value = item['responseValue']
+            if isinstance(value, str):
+                value = item['responseValue'].strip()
+            
+            if heading not in response_dict:
+                response_dict[heading] = [value]
+            else: # value not in response_dict[heading]:
+                response_dict[heading].append(value)
+        
+        # convert a dictionary into a dataframe
+        df = pd.DataFrame(response_dict)
+        df =  df.reset_index(drop=True)
+        results_table = df.to_html(index=False)
     
-    # convert a dictionary into a dataframe
-    
-    df = pd.DataFrame(response_dict)
-    
-    # remove index column
-    df =  df.reset_index(drop=True)
-    print(df)
-    
-    results_table = df.to_html(index=False)
-    # print(results_table)
-   
-    
-    # return render(request, 'survey.html', {'form': form})
-    return render(request, 'projects/results.html', {'form_id': form_id, 'results_table': results_table})
-
+        # return render(request, 'survey.html', {'form': form})
+        return render(request, 'projects/results.html', {'form_id': form_id, 'results_table': results_table})
+    else:   
+        return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})
 
 def thanks(request):
     return render(request, 'projects/Thanks.html')
