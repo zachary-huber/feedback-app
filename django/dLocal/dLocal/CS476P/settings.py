@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-m$!7d!!7*kf3#ii&w9*6pk%-6i62#%ngn1fic6iz$3!(^m_ud%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'a026-67-225-4-188.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'a026-67-225-4-188.ngrok.io', 'b62d-67-225-4-188.ngrok.io', 'commentcorner.ngrok.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://8994-67-225-4-188.ngrok.io']
+CSRF_TRUSTED_ORIGINS = ['https://8994-67-225-4-188.ngrok.io', 'https://b62d-67-225-4-188.ngrok.io', 'https://commentcorner.ngrok.app']
 
 # Application definition
 
