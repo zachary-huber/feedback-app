@@ -363,6 +363,8 @@ function sendData() {
     .then(response => {
     // Handle the response from the Django view
     // console.log(response);
+    window.location.replace("https://commentcorner.ngrok.app/thanks/");
+    
     })
     .catch(error => {
     // Handle any errors that occur during the HTTP request
