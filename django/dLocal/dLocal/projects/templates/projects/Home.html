@@ -5,6 +5,15 @@
 {% load static %}
 <h1>Welcome to CommentCorner! Sign up to get started!</h1>
 
+<head>
+    {% if request.user.is_authenticated %}
+    <meta http-equiv="refresh" content="0; url=https://commentcorner.ngrok.app/users/profiles" />
+    {% else %}
+    <meta http-equiv="refresh" content="0; url=https://commentcorner.ngrok.app/users/login/" />
+    {% endif %}
+   
+</head>
+
 <img src="{% static 'images/logo.png' %}" width="500" height="500">
 
 

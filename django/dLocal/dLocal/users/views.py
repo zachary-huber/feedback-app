@@ -90,6 +90,7 @@ def profiles(request):
     profiles = Profile.objects.all()
     context = {'profiles':profiles}
     user_id = request.user.id
+    
     return user_forms(request, user_id)
     
     return render(request, 'users/profiles.html', context)
