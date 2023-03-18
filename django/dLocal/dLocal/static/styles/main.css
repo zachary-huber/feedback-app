@@ -97,6 +97,10 @@ body {
     background-color: var(--almond);
 }
 
+.home {
+    padding-left: 20px;
+}
+
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -195,7 +199,6 @@ a {
     text-decoration: none;
 
 }
-
 
 .user_forms li {
    
