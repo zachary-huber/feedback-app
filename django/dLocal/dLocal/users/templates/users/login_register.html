@@ -22,8 +22,8 @@
             
             {% for field in form %}
             <div class="form__field">
-                <label for="formInput#text">{{field.label}} </label>
-                 </br>
+                {% comment %} <label for="formInput#text">{{field.label}} </label> {% endcomment %}
+                 {% comment %} </br> {% endcomment %}
                 {{field}}
 
                 <!-- {% if field.help_text %}
