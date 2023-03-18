@@ -292,9 +292,17 @@ function submitResponses(){
         var responseHeading = child.children[0].innerHTML;
         var responseInput = child.children[1];
         var responseValue = responseInput.value;
-        // if(responseInput.type == "radio"){
-        //     responseValue = responseInput.checked;
-        // }
+        
+        if(responseInput.type == "radio"){
+        // check all child.children for checked
+            for (var j = 1; j < child.children.length; j++) {
+                var radio = child.children[j];
+                if(radio.checked){
+                    responseValue = radio.value;
+                }
+            }
+        }
+
         responseJSON.push({
             responseHeading: responseHeading,
             responseValue: responseValue
@@ -389,4 +397,3 @@ testJSON = document.getElementById("formJSON").innerHTML;
 
 // addResponseField();
 // loadFormEditor(testJSON);
-
