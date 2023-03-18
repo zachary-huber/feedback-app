@@ -27,8 +27,8 @@
           
           {% if request.user.is_authenticated %}
           <a class ="linky" href="{% url 'logout' %}">Logout</a>
-          {% else %}
-          <a class ="linky" href="{% url 'login' %}">Login/Sign Up</a>
+          {% comment %} {% else %}
+          <a class ="linky" href="{% url 'login' %}">Login/Sign Up</a> {% endcomment %}
           {% endif %}
    
         </div> 

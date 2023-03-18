@@ -10,28 +10,23 @@
            <a href="{% url 'formEditor' %}">+ Create New Survey</a>
                 <div>
                     <div class="dropdown">
-                        survey name
-                        <b class="dropbtn"> &#x22EE;</b>
-                        {% comment %} user_forms {% endcomment %}
+                        <h3>Surveys</h3>
+
                         <ul class="user_forms">                
                           {% for form_id, form_title in forms %}
                             <a class="form_link" href="{% url 'survey' form_id  %}">
-                              {% comment %} <li>Form ID: {{ form_id }} - Form Title: {{ form_title }}</li> {% endcomment %}
                               <li>{{ form_title }}</li>
-                              {% comment %} <p>{{ request.build_absolute_uri }}{% url 'survey' form_id %}</p> {% endcomment %}
                               <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=http://{{ request.META.HTTP_HOST }}{% url 'survey' form_id %}&amp;size=300x300" width="150" height="150" />
-                            
                             </a>
                             <a class="form_link" href="{% url 'results' form_id  %}">
+                            
                               <li>{{ form_title }} - results</li>
                             </a>
+                          </br>
                           {% endfor %}
                         </ul>
 
-                        <div class="dropdown-content">
-                          <a href="#">Delete</a>
-                          <a href="#">Get QR</a>
-                        </div>
+                        
                       </div>
                 </div>
           </div>

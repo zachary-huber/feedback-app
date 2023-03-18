@@ -131,6 +131,7 @@ h1 {
     width: 600px;
     margin: auto;
     margin-top: 50px;
+    padding: 20px 0;
     text-align: center;
     /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
