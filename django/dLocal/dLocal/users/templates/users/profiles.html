@@ -5,9 +5,9 @@
 <main class="home">
 
 
-           <h2>Welcome back {{request.user.first_name}}!</h2>
+           <h2>Welcome, {{request.user.first_name}}!</h2>
 
-           <a href="{% url 'formEditor' %}">+ Create New Survey</a>
+           <a class="createSurvey" href="{% url 'formEditor' %}">+ Create New Survey</a>
                 <div>
                     <div class="dropdown">
                         <h3>Surveys</h3>

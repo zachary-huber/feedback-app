@@ -264,6 +264,13 @@ a {
     color: white;
 }
 
+.createSurvey {
+    background-color: black;
+    padding: 10px; 
+    color: white;
+    border-radius: 5px;
+}
+
 /* .deleteFormButton {
     font-size: 60px;
     height: 80px;
