@@ -132,7 +132,7 @@ h1 {
 }
 
 .card {
-    width: 600px;
+    width: 350px;
     margin: auto;
     margin-top: 50px;
     padding: 20px 0;
@@ -191,6 +191,7 @@ input[type="submit"] {
 }
 
 label {
+    font-size: 60px;
     margin: auto;
 }
 
@@ -304,6 +305,20 @@ a {
 .resultsButton {
     font-size: 65px;
     background-color: aliceblue;
+}
+
+.attitudeItems {
+    display: flex; 
+    flex-direction: row;
+   
+}
+
+.attitudeItems input {
+    margin-top: 20px;
+}
+
+.attitudeItems label {
+    width: 100px;
 }
 
 

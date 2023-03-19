@@ -210,50 +210,90 @@ function addResponseElement(inputType, questionHeading){
             newDiv.appendChild(newInput);
             break;
         case "true-false":
+
+            var inputDiv = document.createElement("div");
+            inputDiv.setAttribute("class", "attitudeItems");
+            newDiv.appendChild(inputDiv);
+
+            var newLabel = document.createElement("label");
+            newLabel.setAttribute("for", "true");
+            newLabel.innerHTML = "True";
+            inputDiv.appendChild(newLabel);
+
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "true-false" + responseInputs);
             newInput.setAttribute("value", "true");
             newInput.setAttribute("checked", "checked");
-            newDiv.appendChild(newInput);
-            var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "true");
-            newLabel.innerHTML = "True";
-            newDiv.appendChild(newLabel);
-            var newInput = createInputElement("radio");
-            newInput.setAttribute("name", "true-false" + responseInputs);
-            newInput.setAttribute("value", "false");
-            newDiv.appendChild(newInput);
+            inputDiv.appendChild(newInput);
+            
+
+
+            var inputDiv = document.createElement("div");
+            inputDiv.setAttribute("class", "attitudeItems");
+            newDiv.appendChild(inputDiv);
+            
             var newLabel = document.createElement("label");
             newLabel.setAttribute("for", "false");
             newLabel.innerHTML = "False";
-            newDiv.appendChild(newLabel);
+            inputDiv.appendChild(newLabel);
+            var newInput = createInputElement("radio");
+            newInput.setAttribute("name", "true-false" + responseInputs);
+            newInput.setAttribute("value", "false");
+            inputDiv.appendChild(newInput);
+            
             break;
         case "attitude-scale":
-            var newInput = createInputElement("radio");
-            newInput.setAttribute("name", "attitude-scale" + responseInputs);
-            newInput.setAttribute("value", "Disagree");
-            newInput.setAttribute("checked", "checked");
-            newDiv.appendChild(newInput);
+            
+            var inputDiv = document.createElement("div");
+            inputDiv.setAttribute("class", "attitudeItems");
+            newDiv.appendChild(inputDiv);
+            
+
             var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "Disagree");
-            newLabel.innerHTML = "1 = Disagree";
-            newDiv.appendChild(newLabel);
-            var newInput = createInputElement("radio");
-            newInput.setAttribute("name", "attitude-scale" + responseInputs);
-            newInput.setAttribute("value", "Neutral");
-            newDiv.appendChild(newInput);
-            var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "Neutral");
-            newLabel.innerHTML = "2 = Neutral";
-            newDiv.appendChild(newLabel);
+            newLabel.setAttribute("for", "Agree");
+            newLabel.innerHTML = "🙂";
+            inputDiv.appendChild(newLabel);     
+
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "attitude-scale" + responseInputs);
             newInput.setAttribute("value", "Agree");
-            newDiv.appendChild(newInput);
+            inputDiv.appendChild(newInput);
+            
+               
+            var inputDiv = document.createElement("div");
+            inputDiv.setAttribute("class", "attitudeItems");
+            newDiv.appendChild(inputDiv);
+
             var newLabel = document.createElement("label");
-            newLabel.setAttribute("for", "Agree");
-            newLabel.innerHTML = "3 = Agree";
-            newDiv.appendChild(newLabel);
+            newLabel.setAttribute("for", "Neutral");
+            newLabel.innerHTML = "😐";
+            inputDiv.appendChild(newLabel);
+
+            var newInput = createInputElement("radio");
+            newInput.setAttribute("checked", "checked");
+            newInput.setAttribute("name", "attitude-scale" + responseInputs);
+            newInput.setAttribute("value", "Neutral");
+            inputDiv.appendChild(newInput);
+
+            
+
+            var inputDiv = document.createElement("div");
+            inputDiv.setAttribute("class", "attitudeItems");
+            newDiv.appendChild(inputDiv);
+
+            var newLabel = document.createElement("label");
+            newLabel.setAttribute("for", "Disagree");
+            newLabel.innerHTML = "☹️";
+            inputDiv.appendChild(newLabel);
+
+            var newInput = createInputElement("radio");
+            newInput.setAttribute("name", "attitude-scale" + responseInputs);
+            newInput.setAttribute("value", "Disagree");
+            inputDiv.appendChild(newInput);
+
+            
+
+            
             break;
             default:
                 console.log("default");
