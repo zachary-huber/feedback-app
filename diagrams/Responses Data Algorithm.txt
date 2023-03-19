@@ -1,0 +1,84 @@
+Responses Data Algorithm
+
+interface class Subject
+{
+	protected observerList: array of Observer
+	public void register(Observer)
+	public void unregister(Observer)
+	public void notify()
+}
+class ResponsesData implements Subject
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void register(Observer obs)
+		observerList.add(obs)
+	public void unregister(Observer obs)
+		observerList.delete(obs)
+	public void notify()
+		for each obs in observerList
+			obs.update(response_id, form_id, user_id, response_json, created_at, updated_at)
+	public void sendResponse() //calls notify()
+	public type getState()
+		return subjectState
+}
+
+
+interface class Observer
+{
+	public void update(int, int, int, string, string, string)
+}
+class deleteForm implement Observer
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void update(int response_idX, int form_idX, int user_idX, string response_jsonX, string created_atX, string updated_atX)
+	{
+		response_id = response_idX
+		form_id = form_idX
+		user_id = user_idX
+		response_json = response_jsonX
+		created_at = created_atX
+		updated_at = updated_atX
+		displayView()
+	}
+	public void displayView()
+}
+class saveResponses implement Observer
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void update(int response_idX, int form_idX, int user_idX, string response_jsonX, string created_atX, string updated_atX)
+	{
+		response_id = response_idX
+		form_id = form_idX
+		user_id = user_idX
+		response_json = response_jsonX
+		created_at = created_atX
+		updated_at = updated_atX
+		displayView()
+	}
+	public void displayView()
+}
+class results implement Observer
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void update(int response_idX, int form_idX, int user_idX, string response_jsonX, string created_atX, string updated_atX)
+	{
+		response_id = response_idX
+		form_id = form_idX
+		user_id = user_idX
+		response_json = response_jsonX
+		created_at = created_atX
+		updated_at = updated_atX
+		displayView()
+	}
+	public void displayView()
+}
+
+
+
+
+
+
