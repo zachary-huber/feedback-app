@@ -204,22 +204,99 @@ a {
    
     list-style-type: none;
     margin: 0;
+
+    background: rgba(255, 255, 255, 0.589);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    -webkit-backdrop-filter: blur(5px);
     padding: 5px;
-    margin-bottom: 10px;
-    /* round borders */
-    /* border-radius: 6px; */
-    border: black 1px solid;
-    background-color: rgb(100, 73, 255);
-    color: white;
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+
     font-weight: bold;
-    width: 400px;
+    /* width: 400px; */
+    width: fit-content;
 }
 
 .user_forms li:hover {
     /* red border */
     /* outline: 2px solid black; */
     color: black;
-    background-color: rgb(193, 186, 255);
+    background-color: rgba(255, 255, 255, 0.61);
+    outline: solid 2px black;
+}
+
+
+.formCard {
+    background: rgba(255, 255, 255, 0.473);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    -webkit-backdrop-filter: blur(5px);
+    padding: 25px;
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.formCardTitle {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #f2ff79cb;
+    width: fit-content;
+    margin-top: -10px;
+}
+
+.formCard * {
+    margin-right: 20px
+}
+
+.deleteform {
+    background: rgba(255, 47, 47, 0.473);
+    width: 80px;
+    height: 80px;
+    color: black;
+    margin: 0%;
+    border-radius: 5px;
+    border: none;
+}
+
+.deleteform:hover {
+    background: rgba(253, 40, 40, 0.836);
+    color: white;
+}
+
+/* .deleteFormButton {
+    font-size: 60px;
+    height: 80px;
+    width: 80px;
+}
+
+
+.QRButton {
+    font-size: 60px;
+    background-color: aliceblue;
+    margin: 0;
+} */
+
+
+
+
+.QRButton img {
+    margin: 0;
+    width: 82px;
+    height: 82px;
+}
+
+.formCardButtons {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;   
+    font-size: 20px;
+}
+
+.resultsButton {
+    font-size: 65px;
+    background-color: aliceblue;
 }
 
 

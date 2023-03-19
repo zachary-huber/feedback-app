@@ -14,15 +14,24 @@
 
                         <ul class="user_forms">                
                           {% for form_id, form_title in forms %}
-                            <a class="form_link" href="{% url 'survey' form_id  %}">
-                              <li>{{ form_title }}</li>
-                              <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=http://{{ request.META.HTTP_HOST }}{% url 'survey' form_id %}&amp;size=300x300" width="150" height="150" />
-                            </a>
-                            <a class="form_link" href="{% url 'results' form_id  %}">
-                            
-                              <li>{{ form_title }} - results</li>
-                            </a>
-                          </br>
+                          <div class="formCard">
+                            <h3 class="formCardTitle">{{ form_title }}</h3>
+
+                            <div class="formCardButtons"> 
+                              <a class="form_link" href="{% url 'survey' form_id  %}">                    
+                                <li class="QRButton">
+                                  <img id='barcode' src="https://api.qrserver.com/v1/create-qr-code/?data=http://{{ request.META.HTTP_HOST }}{% url 'survey' form_id %}&amp;size=300x300" width="150" height="150" />
+                                </li>
+                              </a>
+                              <a class="form_link" href="{% url 'results' form_id  %}">
+                                {% comment %} <li>{{ form_title }} - results</li> {% endcomment %}
+                                <li class="resultsButton">📊</li>
+                              </a>
+                              <li class="deleteFormButton">
+                                <button class="deleteform" id="deleteForm_{{form_id}}" onclick("deleteForm({{form_id}})")>X</button>
+                              </li>
+                            </div>
+                          </div>
                           {% endfor %}
                         </ul>
 
