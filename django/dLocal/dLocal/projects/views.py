@@ -58,7 +58,7 @@ def thanks(request):
 @login_required(login_url='login')
 def formEditor(request):
     if not (request.user.is_authenticated):
-        return redirect('https://commentcorner.ngrok.app/login')
+        return redirect('https://commentcorner.ngrok.app/users/login/')
     else:
         return render(request, 'projects/formEditor.html')
     
