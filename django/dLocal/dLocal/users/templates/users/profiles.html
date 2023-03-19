@@ -14,7 +14,7 @@
 
                         <ul class="user_forms">                
                           {% for form_id, form_title in forms %}
-                          <div class="formCard">
+                          <div class="formCard" id="form-{{form_id}}">
                             <h3 class="formCardTitle">{{ form_title }}</h3>
 
                             <div class="formCardButtons"> 
@@ -28,7 +28,7 @@
                                 <li class="resultsButton">📋</li>
                               </a>
                               <li class="deleteFormButton">
-                                <button class="deleteform" id="deleteForm_{{form_id}}" onclick("deleteForm({{form_id}})")>X</button>
+                                <button class="deleteform" id="deleteForm_{{form_id}}" onclick="deleteform({{form_id}})">X</button>
                               </li>
                             </div>
                           </div>
@@ -39,7 +39,7 @@
                       </div>
                 </div>
           </div>
-    
+    <script type="text/javascript" src="{% static 'JS/userForms.js' %}">></script>
   </main>
 
 

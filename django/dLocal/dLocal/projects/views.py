@@ -16,6 +16,10 @@ from projects.models import Responses
 
 import pandas as pd
 
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template import loader
+from django.urls import reverse
+
 
 def home(request):
     # projects = Project.objects.all()
@@ -81,7 +85,23 @@ def saveFormEditor(request):
             return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
     else:
         return JsonResponse({'status': 'error', 'message': 'User is not authenticated'})
-    
+
+
+@login_required
+def deleteForm(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            json_data = request.body.decode('utf-8')  # decode the request body
+            formID = json.loads(json_data)
+            
+            form = Forms.objects.get(form_id=formID)
+            form.delete()
+            
+            return JsonResponse({'status': 'ok'})
+        else:
+            return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
+        
+    return HttpResponseRedirect(reverse('index'))
 
 
 def saveResponses(request):   
