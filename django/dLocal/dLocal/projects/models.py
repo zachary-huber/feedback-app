@@ -95,7 +95,7 @@ class Forms(models.Model):
         
 class Responses(models.Model):
     response_id = models.AutoField(primary_key=True)
-    form = models.ForeignKey(Forms, models.DO_NOTHING, blank=True, null=True)
+    form = models.IntegerField(blank=True, null=True) #models.ForeignKey(Forms, models.DO_NOTHING, blank=True, null=True)
     user_id = models.IntegerField(blank=True, null=True) 
     # user = models.ForeignKey('Users', models.DO_NOTHING, blank=True, null=True)
     response_json = models.TextField(db_column='response_JSON', blank=True, null=True)  # Field name made lowercase.

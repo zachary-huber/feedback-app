@@ -97,6 +97,10 @@ def deleteForm(request):
             form = Forms.objects.get(form_id=formID)
             form.delete()
             
+            responses = Responses.objects.filter(form_id=formID)
+            responses.delete()
+            
+            
             return JsonResponse({'status': 'ok'})
         else:
             return JsonResponse({'status': 'error', 'message': 'Invalid request method'})
@@ -140,7 +144,9 @@ def results(request, form_id):
             return redirect('home')
         
         results = Responses.objects.filter(form_id=form_id)
+        # print("form_id: ", form_id, "\n\n")
         
+
         # Create a list of all the response JSONs
         newList = []
         for responseObject in results:
@@ -148,13 +154,17 @@ def results(request, form_id):
             for list in response_list:
                 newList.append(list)
             
+        # print(newList)
+        
         # Create a dictionary of unique responseHeadings and values
         response_dict = {}
         for item in newList:
+            print("responseHeading: ", item['responseHeading'], "\n\n", "ResponseValue: ", item['responseValue'])
+            
             heading = item['responseHeading']
             value = item['responseValue']
-            if isinstance(value, str):
-                value = item['responseValue'].strip()
+            # if isinstance(value, str):
+            #     value = item['responseValue'].strip()
             
             if heading not in response_dict:
                 response_dict[heading] = [value]
