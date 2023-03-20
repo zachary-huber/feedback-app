@@ -90,8 +90,8 @@ def user_forms(request, idd):
         
         # passing the user_id, user_forms, form_ids, and form_titles to the profiles.html template
         return render(request, 'users/profiles.html',  {'id': user_id, 'forms': forms})
-
-
+    
+    
 def profiles(request):
     if not (request.user.is_authenticated):
         return redirect('login')
@@ -103,15 +103,3 @@ def profiles(request):
         return user_forms(request, user_id)
     
     return render(request, 'users/profiles.html', context)
-
-def userProfile(request, pk):
-    profile = Profile.objects.get(id=pk)
-    context = {'profile':profile}
-    return render(request, 'users/user-profile.html', context)
-
-@login_required(login_url='login')
-def userAccount(request):
-    profile = request.user.profile
-    context = {'profile':profile}
-    return render(request, 'users/account.html', context)
-
