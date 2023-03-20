@@ -190,9 +190,24 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+input[type="radio"] {
+    text-align: left;
+    position:relative;
+    /* margin-left: -140px; */
+    padding-top: 100px;
+    width: auto;
+    /* width: fit-content; */
+}
+
 label {
-    font-size: 60px;
+    position: relative;
+    font-size: 30px;
     margin: auto;
+    text-align: left;
+}
+
+#form-elements {
+    text-align: left;
 }
 
 

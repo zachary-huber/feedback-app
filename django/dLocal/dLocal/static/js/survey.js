@@ -219,6 +219,10 @@ function addResponseElement(inputType, questionHeading){
             newLabel.setAttribute("for", "true");
             newLabel.innerHTML = "True";
             newDiv.appendChild(newLabel);
+
+            var br = document.createElement("br")
+            newDiv.appendChild(br);
+
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "true-false" + responseInputs);
             newInput.setAttribute("value", "false");
@@ -236,23 +240,31 @@ function addResponseElement(inputType, questionHeading){
             newDiv.appendChild(newInput);
             var newLabel = document.createElement("label");
             newLabel.setAttribute("for", "Disagree");
-            newLabel.innerHTML = "1 = Disagree";
+            newLabel.innerHTML = "Disagree";
             newDiv.appendChild(newLabel);
+
+            var br = document.createElement("br")
+            newDiv.appendChild(br);
+
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "attitude-scale" + responseInputs);
             newInput.setAttribute("value", "Neutral");
             newDiv.appendChild(newInput);
             var newLabel = document.createElement("label");
             newLabel.setAttribute("for", "Neutral");
-            newLabel.innerHTML = "2 = Neutral";
+            newLabel.innerHTML = "Neutral";
             newDiv.appendChild(newLabel);
+
+            var br = document.createElement("br");
+            newDiv.appendChild(br);
+
             var newInput = createInputElement("radio");
             newInput.setAttribute("name", "attitude-scale" + responseInputs);
             newInput.setAttribute("value", "Agree");
             newDiv.appendChild(newInput);
             var newLabel = document.createElement("label");
             newLabel.setAttribute("for", "Agree");
-            newLabel.innerHTML = "3 = Agree";
+            newLabel.innerHTML = "Agree";
             newDiv.appendChild(newLabel);
             break;
             default:
