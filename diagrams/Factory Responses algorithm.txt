@@ -1,0 +1,72 @@
+class ResponsesSimpleFactory
+{
+	public responses createResponses(string type)
+	if (type == "Responses1") return new Responses1()
+	else if (type == "Responses2") return new Responses2()
+	.
+	.
+	.
+		else if (type == "ResponsesN") return new ResponsesN()
+}
+class User1
+{
+	private ResponsesSimpleFactory sfo
+	public responses createResponses(string type)
+	{
+		responses myResponses = sfo.createResponses(type)
+		myResponses.saveResponses()
+		return myResponses
+	}
+}
+.
+.
+.
+class UserN
+{
+	private ResponsesSimpleFactory sfo
+	public responses createResponses(string type)
+	{
+		responses myResponses = sfo.createResponses(type)
+		myResponses.saveResponses()
+		return myResponses
+	}
+}
+abstract class responses
+{
+	protected response_id, form_id, user_id: int
+	protected response_json, created_at, updated_at: string
+	public void saveResponses()
+	{ }
+}
+class Responses1 extends responses
+{
+	Responses1() //assign values entered by the user during response creation
+	{
+		response_id = 1
+		form_id = 1
+		user_id = 1
+		response_json = "response_json1"
+		created_at = "created_at1"
+		updated_at = "updated_at1"
+	}
+	public void saveResponses()
+	{ }	
+}
+.
+.
+.
+class ResponsesN extends responses
+{
+	ResponsesN() //assign values entered by the user during response creation
+	{
+		response_id = N
+		form_id = N
+		user_id = N
+		response_json = "response_jsonN"
+		created_at = "created_atN"
+		updated_at = "updated_atN"
+	}
+	public void saveResponses()
+	{ }	
+}
+

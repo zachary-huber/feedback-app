@@ -1,0 +1,81 @@
+class FormsSimpleFactory
+{
+	public forms createForms(string type)
+	if (type == "Forms1") return new Forms1()
+	else if (type == "Forms2") return new Forms2()
+	.
+	.
+	.
+		else if (type == "FormsN") return new FormsN()
+}
+class User1
+{
+	private FormsSimpleFactory sfo
+	public forms submitForms(string type)
+		{
+			forms myForms = sfo.createForms(type)
+			myForms.saveFormEditor()
+			return myForms
+		}
+}
+.
+.
+.
+class UserN
+{
+	private FormsSimpleFactory sfo
+	public forms submitForms(string type)
+		{
+			forms myForms = sfo.createForms(type)
+			myForms.saveFormEditor()
+			return myForms
+		}
+}
+abstract class forms
+{
+	protected form_id, user_id, is_active: int
+	protected title, description, created_at, updated_at, form_json: string
+	public void saveFormEditor()
+	{ }
+}
+class forms1 extends forms
+{
+	Forms1() //assign user entered values during form creation
+	{
+		form_id = 1
+		user_id = 1
+		is_active = 1
+		title = "title1"
+		description = "description1"
+		created_at = "created_at1"
+		updated_at = "updated_at1"
+		form_json = "form_json1"
+	}
+	public void saveFormEditor()
+	{ }
+}
+.
+.
+.
+class formsN extends forms
+{
+	FormsN() //assign user entered values during form creation
+	{
+		form_id = N
+		user_id = N
+		is_active = N
+		title = "title1"
+		description = "description1"
+		created_at = "created_at1"
+		updated_at = "updated_at1"
+		form_json = "form_json1"
+	}
+	public void saveFormEditor()
+	{ }
+}
+
+
+
+
+
+
