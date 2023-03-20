@@ -10,7 +10,31 @@
 
 \urlstyle{same}
 \usepackage{wrapfig}
+\usepackage{multicol}
 
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=0mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
 
 
@@ -132,11 +156,10 @@ Both of these other platforms for similar survey creation to ours lock many feat
         \item Viewing statistics and responses to an existing survey
         \item Viewing the QR code for the survey they created
     \end{enumerate}
-    \hfill \break
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.65\textwidth]{feedbackGatherer.png}
+        \includegraphics[width=0.55\textwidth]{feedbackGatherer2.png}
         \caption{Feedback Gatherer Activity Diagram}
     \end{figure}
 \newpage
@@ -147,10 +170,10 @@ Both of these other platforms for similar survey creation to ours lock many feat
         \item Submit the completed survey
     \end{enumerate}
     \linebreak
-    \hfill \break
+
     \begin{figure}[h]
     \centering
-    \includegraphics[width=0.70\textwidth]{respondent.png}
+    \includegraphics[width=0.70\textwidth]{respondent2.png}
     \caption{Respondent Activity Diagram}
     \end{figure}
 
@@ -241,17 +264,540 @@ One major advantage of the Django MVT architecture is the simplified testing pro
 
 Similar to the MVC architecture, the views in Django’s MVT architecture are the dependent objects while the models are the independent objects. In our application, the observer pattern can be used to manage the relationship between the views and the models by notifying the different views whenever there are changes in the model’s data. This can be useful since there are multiple views that are affected by the changes in the data. For example, when a user adds or deletes a survey, this change would be reflected in the survey model. All of the views related to this model would be notified of these changes. The user profile template would display the addition or the deletion of a survey while a new survey page template would be created or deleted. The observer model can be useful in maintaining consistency between the related objects and keeping them up to date. 
 \newline
-\hfill \break
+\clearpage
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{AuthUserClass.png}
+        \caption{AuthUser Class}
+\end{figure}
+
+\begin{lstlisting}
+AuthUser Data Algorithm
+
+interface class Subject
+{
+	protected observerList: array of Observer
+	public void register(Observer)
+	public void unregister(Observer)
+	public void notify()
+}
+class AuthUser Data implements Subject
+{
+	private int is_superuser, is_staff, is_active
+	private string password, last_login, username, first_name, last_name, email, date_joined
+	public void register(Observer obs)
+		observerList.add(obs)
+	public void unregister(Observer obs)
+		observerList.delete(obs)
+	public void notify()
+		for each obs in observerList
+			obs.update(is_superuser, is_staff, is_active, password, last_login, username, first_name, last_name, email, date_joined)
+	public void sendAuthUser() //calls notify()
+	public type getState()
+		return subjectState
+}
+
+
+interface class Observer
+{
+	public void update(int, int, int, string, string, string, string, string, string, string)
+}
+class authUser implement Observer
+{
+	private int is_superuser, is_staff, is_active
+	private string password, last_login, username, first_name, last_name, email, date_joined
+	public void update(int is_superuserX, int is_staffX, int is_activeX, astring passwordX, string last_loginX, string usernameX, string first_nameX, string last_nameX, string emailX, string date_joinedX)
+	{
+		is_superuser = is_superuserX
+		is_staff = is_staffX
+		is_active = is_activeX
+		password = passwordX
+		last_login = last_loginX
+		username = usernameX
+		first_name = first_nameX
+		last_name = last_nameX
+		email = emailX
+		date_joined = date_joinedX
+		displayView()
+	}
+	public void displayView()
+}
+\end{lstlisting}
+\clearpage
+
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.85\textwidth]{ResponsesData.png}
+        \caption{Responses Data}
+    \end{figure}
+
+\begin{lstlisting}
+Responses Data Algorithm
+
+interface class Subject
+{
+	protected observerList: array of Observer
+	public void register(Observer)
+	public void unregister(Observer)
+	public void notify()
+}
+class ResponsesData implements Subject
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void register(Observer obs)
+		observerList.add(obs)
+	public void unregister(Observer obs)
+		observerList.delete(obs)
+	public void notify()
+		for each obs in observerList
+			obs.update(response_id, form_id, user_id, response_json, created_at, updated_at)
+	public void sendResponse() //calls notify()
+	public type getState()
+		return subjectState
+}
+
+
+interface class Observer
+{
+	public void update(int, int, int, string, string, string)
+}
+class deleteForm implement Observer
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void update(int response_idX, int form_idX, int user_idX, string response_jsonX, string created_atX, string updated_atX)
+	{
+		response_id = response_idX
+		form_id = form_idX
+		user_id = user_idX
+		response_json = response_jsonX
+		created_at = created_atX
+		updated_at = updated_atX
+		displayView()
+	}
+	public void displayView()
+}
+class saveResponses implement Observer
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void update(int response_idX, int form_idX, int user_idX, string response_jsonX, string created_atX, string updated_atX)
+	{
+		response_id = response_idX
+		form_id = form_idX
+		user_id = user_idX
+		response_json = response_jsonX
+		created_at = created_atX
+		updated_at = updated_atX
+		displayView()
+	}
+	public void displayView()
+}
+class results implement Observer
+{
+	private int response_id, form_id, user_id
+	private string response_json, created_at, updated_at
+	public void update(int response_idX, int form_idX, int user_idX, string response_jsonX, string created_atX, string updated_atX)
+	{
+		response_id = response_idX
+		form_id = form_idX
+		user_id = user_idX
+		response_json = response_jsonX
+		created_at = created_atX
+		updated_at = updated_atX
+		displayView()
+	}
+	public void displayView()
+}
+\end{lstlisting}
+
+\clearpage
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.85\textwidth]{FormsData.png}
+        \caption{Forms Data}
+    \end{figure}
+
+\begin{lstlisting}
+Forms in Projects Application Algorithm
+
+interface class Subject
+{
+	protected observerList: array of Observer
+	public void register(Observer)
+	public void unregister(Observer)
+	public void notify()
+}
+class FormsData implements Subject
+{
+	private int form_id, user_id, is_active
+	private string title, description, created_at, updated_at, form_json
+	public void register(Observer obs)
+		observerList.add(obs)
+	public void unregister(Observer obs)
+		observerList.delete(obs)
+	public void notify()
+		for each obs in observerList
+			obs.update(form_id, user_id, is_active, title, description, created_at, updated_at, form_json)
+	public void sendForms() //calls notify()
+	public type getState()
+		return subjectState
+}
+
+
+interface class Observer
+{
+	public void update(int, int, int, string, string, string, string, string)	
+}
+class survey implement Observer
+{
+	private int form_id, user_id, is_active
+	private string title, description, created_at, updated_at, form_json
+	public void update(int form_idX, int user_idX, int is_activeX, string titleX, string descriptionX, string created_atX, string updated_atX, string form_jsonX)
+	{
+		form_id = form_idX
+		user_id = user_idX
+		is_active = is_activeX
+		title = titleX
+		description = descriptionX
+		created_at = created_atX
+		updated_at = updated_atX
+		form_json = formjsonX
+		displayView()
+	}
+	public void displayView()
+}
+class saveFormEditor implement Observer
+{
+	private int form_id, user_id, is_active
+	private string title, description, created_at, updated_at, form_json
+	public void update(int form_idX, int user_idX, int is_activeX, string titleX, string descriptionX, string created_atX, string updated_atX, string form_jsonX)
+	{
+		form_id = form_idX
+		user_id = user_idX
+		is_active = is_activeX
+		title = titleX
+		description = descriptionX
+		created_at = created_atX
+		updated_at = updated_atX
+		form_json = formjsonX
+		displayView()
+	}
+	public void displayView()
+}
+class deleteForm implement Observer
+{
+	private int form_id, user_id, is_active
+	private string title, description, created_at, updated_at, form_json
+	public void update(int form_idX, int user_idX, int is_activeX, string titleX, string descriptionX, string created_atX, string updated_atX, string form_jsonX)
+	{
+		form_id = form_idX
+		user_id = user_idX
+		is_active = is_activeX
+		title = titleX
+		description = descriptionX
+		created_at = created_atX
+		updated_at = updated_atX
+		form_json = formjsonX
+		displayView()
+	}
+	public void displayView()
+}
+class results implement Observer
+{
+	private int form_id, user_id, is_active
+	private string title, description, created_at, updated_at, form_json
+	public void update(int form_idX, int user_idX, int is_activeX, string titleX, string descriptionX, string created_atX, string updated_atX, string form_jsonX)
+	{
+		form_id = form_idX
+		user_id = user_idX
+		is_active = is_activeX
+		title = titleX
+		description = descriptionX
+		created_at = created_atX
+		updated_at = updated_atX
+		form_json = formjsonX
+		displayView()
+	}
+	public void displayView()
+}
+\end{lstlisting}
+
+
+\clearpage
 \textbf{Factory Patterns}
 
 In our application, the factory design pattern can be used to store the family of objects in one class and to keep the code of building the objects hidden from the clients. For example, a factory class can be used for the creation of surveys, which is a family of related objects. The factory class would be the centralized class that creates a family of different surveys. This results in consistent products for all clients while having a highly maintainable program with no duplication of code. The factory class would return a survey depending on the questions and the type of answers selected by the client. The factory design pattern is useful for our application because we have many users that need the same family of objects which is the survey.
 
-
 \linebreak
     \hfill \break
-    
+\clearpage
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{FactoryAuthUser.png}
+        \caption{AuthUser Class}
+\end{figure}
+
+\begin{lstlisting}
+class AuthUserSimpleFactory
+{
+	public AuthUser createAuthUser(string type)
+	if (type == "AuthUser1") return new AuthUser1()
+	else if (type == "AuthUser2") return new AuthUser2()
+		.
+		.
+		.
+		else if (type == "AuthUserN") return new AuthUserN() 
+}
+class User1
+{
+	private AuthUserSimpleFactory sfo
+	public AuthUser requestAuthUser(string type)
+	{
+		AuthUser myAuthUser = sfo.createAuthUser(type)
+		myAuthUser.register()
+		return myAuthUser
+	{	
+}
+.
+.
+.
+class UserN
+{
+	private AuthUserSimpleFactory sfo
+	public AuthUser requestAuthUser(string type)
+	{
+		AuthUser myAuthUser = sfo.createAuthUser(type)
+		myAuthUser.register()
+		return myAuthUser
+	{	
+}
+abstract class AuthUser
+{
+	protected password, last_login, username, first_name, last_name, email, date_joined: string
+	protected is_superuser, is_staff, is_active: int
+	public void register()	
+	{ }
+}
+class AuthUser1 extends AuthUser
+{
+	AuthUser1() //assign values entered by the user during registration
+	{
+		password = "password1"
+		last_login = "last_login1"
+		username = "username1"
+		first_name = "first_name1"
+		last_name = "last_name1"
+		email = "email1"
+		date_joined = "date_joined1"
+		is_superuser = 0
+		is_staff = 0
+		is_active = 1
+	}
+	public void register()
+	{ }
+}
+.
+.
+.
+class AuthUserN extends AuthUser
+{
+	AuthUserN() //assign user entered values during registration
+	{
+		password = "passwordN"
+		last_login = "last_loginN"
+		username = "usernameN"
+		first_name = "first_nameN"
+		last_name = "last_nameN"
+		email = "emailN"
+		date_joined = "date_joinedN"
+		is_superuser = 0
+		is_staff = 0
+		is_active = 1
+	}
+	public void register()
+	{ }
+}
+\end{lstlisting}
+
+\clearpage
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{FactoryForms.png}
+        \caption{Forms Class}
+\end{figure}
+
+\begin{lstlisting}
+class FormsSimpleFactory
+{
+	public forms createForms(string type)
+	if (type == "Forms1") return new Forms1()
+	else if (type == "Forms2") return new Forms2()
+	.
+	.
+	.
+		else if (type == "FormsN") return new FormsN()
+}
+class User1
+{
+	private FormsSimpleFactory sfo
+	public forms submitForms(string type)
+		{
+			forms myForms = sfo.createForms(type)
+			myForms.saveFormEditor()
+			return myForms
+		}
+}
+.
+.
+.
+class UserN
+{
+	private FormsSimpleFactory sfo
+	public forms submitForms(string type)
+		{
+			forms myForms = sfo.createForms(type)
+			myForms.saveFormEditor()
+			return myForms
+		}
+}
+abstract class forms
+{
+	protected form_id, user_id, is_active: int
+	protected title, description, created_at, updated_at, form_json: string
+	public void saveFormEditor()
+	{ }
+}
+class forms1 extends forms
+{
+	Forms1() //assign user entered values during form creation
+	{
+		form_id = 1
+		user_id = 1
+		is_active = 1
+		title = "title1"
+		description = "description1"
+		created_at = "created_at1"
+		updated_at = "updated_at1"
+		form_json = "form_json1"
+	}
+	public void saveFormEditor()
+	{ }
+}
+.
+.
+.
+class formsN extends forms
+{
+	FormsN() //assign user entered values during form creation
+	{
+		form_id = N
+		user_id = N
+		is_active = N
+		title = "title1"
+		description = "description1"
+		created_at = "created_at1"
+		updated_at = "updated_at1"
+		form_json = "form_json1"
+	}
+	public void saveFormEditor()
+	{ }
+}
+\end{lstlisting}
+
+\clearpage
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.8\textwidth]{FactoryResponses.png}
+        \caption{Responses Class}
+\end{figure}
+
+\begin{lstlisting}
+class ResponsesSimpleFactory
+{
+	public responses createResponses(string type)
+	if (type == "Responses1") return new Responses1()
+	else if (type == "Responses2") return new Responses2()
+	.
+	.
+	.
+		else if (type == "ResponsesN") return new ResponsesN()
+}
+class User1
+{
+	private ResponsesSimpleFactory sfo
+	public responses createResponses(string type)
+	{
+		responses myResponses = sfo.createResponses(type)
+		myResponses.saveResponses()
+		return myResponses
+	}
+}
+.
+.
+.
+class UserN
+{
+	private ResponsesSimpleFactory sfo
+	public responses createResponses(string type)
+	{
+		responses myResponses = sfo.createResponses(type)
+		myResponses.saveResponses()
+		return myResponses
+	}
+}
+abstract class responses
+{
+	protected response_id, form_id, user_id: int
+	protected response_json, created_at, updated_at: string
+	public void saveResponses()
+	{ }
+}
+class Responses1 extends responses
+{
+	Responses1() //assign values entered by the user during response creation
+	{
+		response_id = 1
+		form_id = 1
+		user_id = 1
+		response_json = "response_json1"
+		created_at = "created_at1"
+		updated_at = "updated_at1"
+	}
+	public void saveResponses()
+	{ }	
+}
+.
+.
+.
+class ResponsesN extends responses
+{
+	ResponsesN() //assign values entered by the user during response creation
+	{
+		response_id = N
+		form_id = N
+		user_id = N
+		response_json = "response_jsonN"
+		created_at = "created_atN"
+		updated_at = "updated_atN"
+	}
+	public void saveResponses()
+	{ }	
+}
+\end{lstlisting}
+
 \newpage
 \subsection{Provide the class diagram of the whole system by incorporating the two design patterns.}
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth]{entireClassDiagram.png}
+        \caption{Whole System Class Diagram}
+\end{figure}
+
 \linebreak
     \hfill \break
 \newpage
@@ -260,17 +806,413 @@ In our application, the factory design pattern can be used to store the family o
 
 \section{Software Construction}
 \subsection{Submit the screenshot of the entire structure of the code within the web framework.}
+
+\singlespacing
+\begin{lstlisting}
+    ├───dLocal
+│   └───dLocal
+│       │   db.sqlite3
+│       │   manage.py
+│       │   models.py
+│       │
+│       ├───CS476P
+│       │   │   asgi.py
+│       │   │   settings.py
+│       │   │   urls.py
+│       │   │   wsgi.py
+│       │   │   __init__.py
+│       │   │
+│       │   └───__pycache__
+│       │           settings.cpython-310.pyc
+│       │           settings.cpython-311.pyc
+│       │           urls.cpython-310.pyc
+│       │           urls.cpython-311.pyc
+│       │           wsgi.cpython-310.pyc
+│       │           wsgi.cpython-311.pyc
+│       │           __init__.cpython-310.pyc
+│       │           __init__.cpython-311.pyc
+│       │
+│       ├───projects
+│       │   │   admin.py
+│       │   │   apps.py
+│       │   │   models.py
+│       │   │   tests.py
+│       │   │   urls.py
+│       │   │   views.py
+│       │   │   __init__.py
+│       │   │
+│       │   ├───migrations
+│       │   │   │   0001_initial.py
+│       │   │   │   0002_tag_project_vote_ratio_project_vote_total_review_and_more.py
+│       │   │   │   0003_form_project_featured_image_response.py
+│       │   │   │   0004_project_owner.py
+│       │   │   │   0005_alter_form_created.py
+│       │   │   │   0005_rename_created_form_created_at_remove_form_id_and_more.py
+│       │   │   │   0006_forms_projectsform.py
+│       │   │   │   0006_rename_created_response_created_at_and_more.py
+│       │   │   │   0007_merge_20230319_1823.py
+│       │   │   │   __init__.py
+│       │   │   │
+│       │   │   └───__pycache__
+│       │   │           0001_initial.cpython-310.pyc
+│       │   │           0001_initial.cpython-311.pyc
+│       │   │           0002_tag_project_vote_ratio_project_vote_total_review_and_more.cpython-310.pyc
+│       │   │           0002_tag_project_vote_ratio_project_vote_total_review_and_more.cpython-311.pyc
+│       │   │           0003_form_project_featured_image_response.cpython-310.pyc
+│       │   │           0003_form_project_featured_image_response.cpython-311.pyc
+│       │   │           0004_project_owner.cpython-310.pyc
+│       │   │           0004_project_owner.cpython-311.pyc
+│       │   │           0005_alter_form_created.cpython-310.pyc
+│       │   │           0005_rename_created_form_created_at_remove_form_id_and_more.cpython-310.pyc
+│       │   │           0006_forms_projectsform.cpython-310.pyc
+│       │   │           0006_rename_created_response_created_at_and_more.cpython-310.pyc
+│       │   │           0007_merge_20230319_1823.cpython-310.pyc
+│       │   │           __init__.cpython-310.pyc
+│       │   │           __init__.cpython-311.pyc
+│       │   │
+│       │   ├───templates
+│       │   │   └───projects
+│       │   │           formEditor.html
+│       │   │           Home.html
+│       │   │           results.html
+│       │   │           saveFormEditor.html
+│       │   │           Survey.html
+│       │   │           Thanks.html
+│       │   │
+│       │   └───__pycache__
+│       │           admin.cpython-310.pyc
+│       │           admin.cpython-311.pyc
+│       │           apps.cpython-310.pyc
+│       │           apps.cpython-311.pyc
+│       │           models.cpython-310.pyc
+│       │           models.cpython-311.pyc
+│       │           urls.cpython-310.pyc
+│       │           urls.cpython-311.pyc
+│       │           views.cpython-310.pyc
+│       │           views.cpython-311.pyc
+│       │           __init__.cpython-310.pyc
+│       │           __init__.cpython-311.pyc
+│       │
+│       ├───static
+│       │   ├───images
+│       │   │   │   default.jpg
+│       │   │   │   logo.png
+│       │   │   │   thankyou.png
+│       │   │   │
+│       │   │   └───profiles
+│       │   │           logo.jpg
+│       │   │           user-default.png
+│       │   │
+│       │   ├───js
+│       │   │       form.js
+│       │   │       manager.js
+│       │   │       survey.js
+│       │   │       userForms.js
+│       │   │
+│       │   └───styles
+│       │           formEditor.css
+│       │           main.css
+│       │           results_table.css
+│       │
+│       ├───staticfiles
+│       │   ├───admin
+│       │   │   ├───css
+│       │   │   │   │   autocomplete.css
+│       │   │   │   │   base.css
+│       │   │   │   │   changelists.css
+│       │   │   │   │   dark_mode.css
+│       │   │   │   │   dashboard.css
+│       │   │   │   │   fonts.css
+│       │   │   │   │   forms.css
+│       │   │   │   │   login.css
+│       │   │   │   │   nav_sidebar.css
+│       │   │   │   │   responsive.css
+│       │   │   │   │   responsive_rtl.css
+│       │   │   │   │   rtl.css
+│       │   │   │   │   widgets.css
+│       │   │   │   │
+│       │   │   │   └───vendor
+│       │   │   │       └───select2
+│       │   │   │               LICENSE-SELECT2.md
+│       │   │   │               select2.css
+│       │   │   │               select2.min.css
+│       │   │   │
+│       │   │   ├───fonts
+│       │   │   │       LICENSE.txt
+│       │   │   │       README.txt
+│       │   │   │       Roboto-Bold-webfont.woff
+│       │   │   │       Roboto-Light-webfont.woff
+│       │   │   │       Roboto-Regular-webfont.woff
+│       │   │   │
+│       │   │   ├───img
+│       │   │   │   │   calendar-icons.svg
+│       │   │   │   │   icon-addlink.svg
+│       │   │   │   │   icon-alert.svg
+│       │   │   │   │   icon-calendar.svg
+│       │   │   │   │   icon-changelink.svg
+│       │   │   │   │   icon-clock.svg
+│       │   │   │   │   icon-deletelink.svg
+│       │   │   │   │   icon-no.svg
+│       │   │   │   │   icon-unknown-alt.svg
+│       │   │   │   │   icon-unknown.svg
+│       │   │   │   │   icon-viewlink.svg
+│       │   │   │   │   icon-yes.svg
+│       │   │   │   │   inline-delete.svg
+│       │   │   │   │   LICENSE
+│       │   │   │   │   README.txt
+│       │   │   │   │   search.svg
+│       │   │   │   │   selector-icons.svg
+│       │   │   │   │   sorting-icons.svg
+│       │   │   │   │   tooltag-add.svg
+│       │   │   │   │   tooltag-arrowright.svg
+│       │   │   │   │
+│       │   │   │   └───gis
+│       │   │   │           move_vertex_off.svg
+│       │   │   │           move_vertex_on.svg
+│       │   │   │
+│       │   │   └───js
+│       │   │       │   actions.js
+│       │   │       │   autocomplete.js
+│       │   │       │   calendar.js
+│       │   │       │   cancel.js
+│       │   │       │   change_form.js
+│       │   │       │   collapse.js
+│       │   │       │   core.js
+│       │   │       │   filters.js
+│       │   │       │   inlines.js
+│       │   │       │   jquery.init.js
+│       │   │       │   nav_sidebar.js
+│       │   │       │   popup_response.js
+│       │   │       │   prepopulate.js
+│       │   │       │   prepopulate_init.js
+│       │   │       │   SelectBox.js
+│       │   │       │   SelectFilter2.js
+│       │   │       │   urlify.js
+│       │   │       │
+│       │   │       ├───admin
+│       │   │       │       DateTimeShortcuts.js
+│       │   │       │       RelatedObjectLookups.js
+│       │   │       │
+│       │   │       └───vendor
+│       │   │           ├───jquery
+│       │   │           │       jquery.js
+│       │   │           │       jquery.min.js
+│       │   │           │       LICENSE.txt
+│       │   │           │
+│       │   │           ├───select2
+│       │   │           │   │   LICENSE.md
+│       │   │           │   │   select2.full.js
+│       │   │           │   │   select2.full.min.js
+│       │   │           │   │
+│       │   │           │   └───i18n
+│       │   │           │           af.js
+│       │   │           │           ar.js
+│       │   │           │           az.js
+│       │   │           │           bg.js
+│       │   │           │           bn.js
+│       │   │           │           bs.js
+│       │   │           │           ca.js
+│       │   │           │           cs.js
+│       │   │           │           da.js
+│       │   │           │           de.js
+│       │   │           │           dsb.js
+│       │   │           │           el.js
+│       │   │           │           en.js
+│       │   │           │           es.js
+│       │   │           │           et.js
+│       │   │           │           eu.js
+│       │   │           │           fa.js
+│       │   │           │           fi.js
+│       │   │           │           fr.js
+│       │   │           │           gl.js
+│       │   │           │           he.js
+│       │   │           │           hi.js
+│       │   │           │           hr.js
+│       │   │           │           hsb.js
+│       │   │           │           hu.js
+│       │   │           │           hy.js
+│       │   │           │           id.js
+│       │   │           │           is.js
+│       │   │           │           it.js
+│       │   │           │           ja.js
+│       │   │           │           ka.js
+│       │   │           │           km.js
+│       │   │           │           ko.js
+│       │   │           │           lt.js
+│       │   │           │           lv.js
+│       │   │           │           mk.js
+│       │   │           │           ms.js
+│       │   │           │           nb.js
+│       │   │           │           ne.js
+│       │   │           │           nl.js
+│       │   │           │           pl.js
+│       │   │           │           ps.js
+│       │   │           │           pt-BR.js
+│       │   │           │           pt.js
+│       │   │           │           ro.js
+│       │   │           │           ru.js
+│       │   │           │           sk.js
+│       │   │           │           sl.js
+│       │   │           │           sq.js
+│       │   │           │           sr-Cyrl.js
+│       │   │           │           sr.js
+│       │   │           │           sv.js
+│       │   │           │           th.js
+│       │   │           │           tk.js
+│       │   │           │           tr.js
+│       │   │           │           uk.js
+│       │   │           │           vi.js
+│       │   │           │           zh-CN.js
+│       │   │           │           zh-TW.js
+│       │   │           │
+│       │   │           └───xregexp
+│       │   │                   LICENSE.txt
+│       │   │                   xregexp.js
+│       │   │                   xregexp.min.js
+│       │   │
+│       │   ├───images
+│       │   │   │   default.jpg
+│       │   │   │   logo.png
+│       │   │   │   thankyou.png
+│       │   │   │
+│       │   │   └───profiles
+│       │   │           logo.jpg
+│       │   │           user-default.png
+│       │   │
+│       │   ├───js
+│       │   │       form.js
+│       │   │       manager.js
+│       │   │       survey.js
+│       │   │
+│       │   └───styles
+│       │           formEditor.css
+│       │           main.css
+│       │           results_table.css
+│       │
+│       ├───templates
+│       │       file.vuerd.json
+│       │       main.html
+│       │       navbar.html
+│       │
+│       └───users
+│           │   admin.py
+│           │   apps.py
+│           │   forms.py
+│           │   models.py
+│           │   tests.py
+│           │   urls.py
+│           │   views.py
+│           │   __init__.py
+│           │
+│           ├───migrations
+│           │   │   0001_initial.py
+│           │   │   0002_profile_username.py
+│           │   │   0003_profile_location_skill.py
+│           │   │   __init__.py
+│           │   │
+│           │   └───__pycache__
+│           │           0001_initial.cpython-310.pyc
+│           │           0001_initial.cpython-311.pyc
+│           │           0002_profile_username.cpython-310.pyc
+│           │           0002_profile_username.cpython-311.pyc
+│           │           0003_profile_location_skill.cpython-310.pyc
+│           │           0003_profile_location_skill.cpython-311.pyc
+│           │           __init__.cpython-310.pyc
+│           │           __init__.cpython-311.pyc
+│           │
+│           ├───templates
+│           │   └───users
+│           │           formEditor-old.html
+│           │           login_register.html
+│           │           profiles.html
+│           │
+│           └───__pycache__
+│                   admin.cpython-310.pyc
+│                   admin.cpython-311.pyc
+│                   apps.cpython-310.pyc
+│                   apps.cpython-311.pyc
+│                   forms.cpython-310.pyc
+│                   forms.cpython-311.pyc
+│                   models.cpython-310.pyc
+│                   models.cpython-311.pyc
+│                   urls.cpython-310.pyc
+│                   urls.cpython-311.pyc
+│                   views.cpython-310.pyc
+│                   views.cpython-311.pyc
+│                   __init__.cpython-310.pyc
+│                   __init__.cpython-311.pyc
+│
+└───formEditorJS
+        form.js
+        index.html
+\end{lstlisting}
+
+\doublespacing
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{5a1.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{5a2.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{5a3.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{5a4.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{5a5.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.45\textwidth]{5a6.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+
 \linebreak
     \hfill \break
-    
+    \clearpage
 \subsection{Deployment diagram regarding the hardware configuration of the code. Indicate the supported Web browsers, the application/Web servers and the database solution.}
+
+All web browsers are supported. Our application is created using the Django framework and the web server is ngrok. MySQL was used as the database solution.
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{deploymentDiagram.png}
+        %\caption{Forms Class in Users Application and Project Application}
+\end{figure}
+
 \linebreak
-    \hfill \break
-    
+\clearpage    
 \subsection{Screenshots of all table contents of the system data.}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{5c1.png}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{5c2.png}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\textwidth]{5c3.png}
+\end{figure}
+\newpage
+
+
 \linebreak
-    \hfill \break
-    
 \subsection{GitHub link of the entire program. All students must contribute equally to the programming part. The commit log of each student will be checked within GitHub. Website builders, such as Wordpress, are not allowed.}
 \linebreak
 \url{https://github.com/zachary-huber/feedback-app}
@@ -338,26 +1280,70 @@ In our application, the factory design pattern can be used to store the family o
 
 \section{Acceptance Testing: select test cases for both user roles. The sign-in and sign-up are excluded from testing.}
 \subsection{Correctness testing using four test cases (screenshots of both inputs and outputs).}
-\newline
+%\newline
 
 \textbf{Feedback gatherer:}
 \begin{itemize}
     \item[] Input: Feedback gatherer creates a survey by selecting the types of answers and entering the questions. 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct1.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Output: When they click the “Create Survey” button, a QR code is generated.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct2.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Input: Feedback gatherer clicks on one of the past surveys.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct3.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Output: Feedback gatherer can view the responses to the correct survey.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct4.png}
+        %\caption{Profile Class}
+\end{figure}
 \end{itemize}
 
 \hfill \break
+\clearpage
 \textbf{Respondent:}
 \begin{itemize}
     \item[] Input: Respondent scans the QR code.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct5.png}
+        %\caption{Profile Class}
+\end{figure}
+
     \item[] Output: Respondent is taken to the correct survey.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct6.png}
+        %\caption{Profile Class}
+\end{figure}
+\clearpage
     \item[] Input: Respondent completes the survey and clicks submit.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct7.png}
+        %\caption{Profile Class}
+\end{figure}
+
     \item[] Output: Respondent is taken to the thank you page.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{correct8.png}
+        %\caption{Profile Class}
+\end{figure}
 \end{itemize}
 
 \newpage
@@ -369,12 +1355,35 @@ Output: Feedback gatherer can view the responses to the correct survey.
 
 \begin{itemize}
     \item[] Input: Feedback gatherer tries to go to the sign up page while already logged in.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust1.png}
+        %\caption{Profile Class}
+\end{figure}
+\item[]
+
 
 Output: Feedback gatherer is redirected to landing page.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust2.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Input: Feedback gatherer tries to go to the login page while already logged in.
-
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust3.png}
+        %\caption{Profile Class}
+\end{figure}
+\clearpage
 Output: Feedback gatherer is redirected to landing page.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust4.png}
+        %\caption{Profile Class}
+\end{figure}
+
 \end{itemize}
 \newline 
 \hfill \break
@@ -382,12 +1391,32 @@ Output: Feedback gatherer is redirected to landing page.
 \textbf{Respondent:}
 \begin{itemize}
     \item[] Input: Respondent tries to go the landing page while not logged in.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust5.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Output: Respondent is redirected to login page.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust6.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Input: Respondent tries to go the create survey page while not logged in.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust7.png}
+        %\caption{Profile Class}
+\end{figure}
 
 Output: Respondent is redirected to login page.
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{robust8.png}
+        %\caption{Profile Class}
+\end{figure}
 
 \end{itemize}
 \newpage 
@@ -397,24 +1426,44 @@ Output: Respondent is redirected to login page.
 
 \textbf{Feedback gatherer:}
 \begin{itemize}
-    \item[] Create survey: Time taken for the survey data to be stored in the database and the QR code to be generated.
+    \item[] Create survey: Time taken for the survey data to be stored in the database and the QR code to be generated. \(\sim \)300ms
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{time1.png}
+        %\caption{Profile Class}
+\end{figure}
 
-View responses: Time taken for the response data to be shown to the feedback gatherer after clicking a past survey.
+View responses: Time taken for the response data to be shown to the feedback gatherer after clicking a past survey. \(\sim \)320ms
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{time2.png}
+        %\caption{Profile Class}
+\end{figure}
 \end{itemize}
 \newline
 \hfill \break
 
-
+\clearpage
 \textbf{Respondent:}
 \begin{itemize}
-    \item[] Go to survey: Time taken for the survey to be loaded from the database when the QR code is scanned.
+    \item[] Go to survey: Time taken for the survey to be loaded from the database when the QR code is scanned. \(\sim \)600ms
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{time3.png}
+        %\caption{Profile Class}
+\end{figure}
 
-Submit responses: Time taken for the response data to be stored in the database and to show the respondent that the responses were successfully submitted.
+Submit responses: Time taken for the response data to be stored in the database and to show the respondent that the responses were successfully submitted. \(\sim \)125ms
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{time4.png}
+        %\caption{Profile Class}
+\end{figure}
 
 \end{itemize}
 \newline
 \hfill \break
-Method: Use inspect network in Google Chrome.
+Method: Network tab on Google Chrome inspect.
 
 
 \addtolength{\textheight}{-12cm}
