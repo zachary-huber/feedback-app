@@ -115,23 +115,44 @@ Both of these other platforms for similar survey creation to ours lock many feat
 \newpage
 
 \subsection{For each user role, provide the use case diagram with all the use cases and actors.}
-\hfill \break
 
+\hfill \break
+\begin{figure}[h]
+\centering
 \includegraphics[width=0.70\textwidth]{caseDiagram.png}
+\caption{Use Case Diagrams for both the Feedback Gatherer and Respondent}
+\end{figure}
 
 \newpage
 \subsection{Describe in detail two use cases using the activity diagram. Choose the most complex use cases.}
 \begin{enumerate}
-    \item The feedback gatherer can create a survey after registering. The feedback gatherer has the option to delete an existing survey or view statistics and responses to an existing survey. After creating a survey, the feedback gatherer can view the QR code to administer the created survey.
+    \item The main use case for the feedback gatherer includes: 
+    \begin{enumerate}
+        \item Creating a survey after registering
+        \item Viewing statistics and responses to an existing survey
+        \item Viewing the QR code for the survey they created
+    \end{enumerate}
     \hfill \break
 
-    \includegraphics[width=0.70\textwidth]{feedbackGatherer.png}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.65\textwidth]{feedbackGatherer.png}
+        \caption{Feedback Gatherer Activity Diagram}
+    \end{figure}
 \newpage
-    \item The respondent can scan the QR code to take a survey created by a feedback gatherer. The respondent enters responses to the survey and submit the responses.
+    \item The main use case for the respondent includes:
+    \begin{enumerate}
+        \item Scanning the QR code to access the survey previously created by the feedback gatherer
+        \item Enter responses to the given survey questions
+        \item Submit the completed survey
+    \end{enumerate}
     \linebreak
     \hfill \break
+    \begin{figure}[h]
+    \centering
     \includegraphics[width=0.70\textwidth]{respondent.png}
-    
+    \caption{Respondent Activity Diagram}
+    \end{figure}
 
 \end{enumerate}
 \hfill \break
@@ -139,12 +160,12 @@ Both of these other platforms for similar survey creation to ours lock many feat
 
 \subsection{Software qualities: Correctness, Time-eﬀiciency and Robustness. Include at least two concrete examples for each quality for each user role. The sign-in and sign-up use cases are excluded from the examples.}
 \linebreak
-    \hfill \break
+
 \textbf{Correctness:}
 \begin{enumerate}
     \item[] Feedback Gatherer:
     \begin{itemize}
-        \item A survey correctly displays the questions and answer choices entered by the feedback gatherer during creation. 
+        \item A survey correctly displays the questions and answer choices entered by the feedback gatherer during survey creation. 
         \item Accurate statistics for a survey are shown to the feedback gatherer.
     \end{itemize}
     \item[] Respondent:
@@ -160,12 +181,12 @@ Both of these other platforms for similar survey creation to ours lock many feat
     \item[] Feedback Gatherer:
     \begin{itemize}
         \item  When a feedback gatherer creates the survey, the QR code for the survey is created in a timely manner.
-        \item When responses to a survey are submitted, they are available for view by the feedback gatherer in a timely manner.
+        \item When responses to a survey are submitted, they are available to be viewed by the feedback gatherer in a timely manner.
     \end{itemize}
     \item[] Respondent:
     \begin{itemize}
-        \item A respondent is taken to the survey in a timely manner after scanning a QR code for a survey.
-        \item A respondent is given a confirmation in a timely manner after submitting a survey.
+        \item The respondent is taken to the survey in a timely manner after scanning the QR code for a survey.
+        \item The respondent is given the submission confirmation in a timely manner after submitting a survey.
     \end{itemize}
 \end{enumerate}
 
@@ -176,12 +197,12 @@ Both of these other platforms for similar survey creation to ours lock many feat
 \begin{enumerate}
     \item[] Feedback Gatherer:
     \begin{itemize}
-        \item  If a feedback gatherer attempts to submit a blank survey, submission is denied with a warning.
-        \item If a feedback gatherer forgets to select a type of answer to a question, submission is denied with a warning.
+        \item  If a feedback gatherer attempts to submit a blank survey, the submission is denied with a warning.
+        \item If a feedback gatherer forgets to select a type of answer for a question, submission is denied with a warning.
     \end{itemize}
     \item[] Respondent:
     \begin{itemize}
-        \item If a respondent attempts to submit a survey with one or more unanswered questions, submission is denied and unanswered questions are marked.
+        \item If a respondent attempts to submit a survey with one or more unanswered questions, the submission is denied and unanswered questions are marked as such.
         \item If a respondent attempts to exit the survey after answering one or more questions, a warning is shown.
     \end{itemize}
 \end{enumerate}
@@ -189,27 +210,53 @@ Both of these other platforms for similar survey creation to ours lock many feat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage 
 \section{Top-level and Low-level Software Design}
-\subsection{Provide the MVC architecture according to the selected Web frame- work. Also, describe at least three benefits of MVC for your application.}
+\subsection{Provide the MVC architecture according to the selected Web framework. Also, describe at least three benefits of MVC for your application.}
 \newline
 \hfill
 
-Django uses MVT (Model View Template) architecture which is a variation of the traditional MVC (Model View Controller) architecture. Similar to the MVC, the Model in MVT represents the data and the business logic. The View in MVT is split into two parts. The Template displays the data while the View handles the user input and interacts with the Model to retrieve and manipulate the data. Similar to the MVC, MVT separates layers and keeps the code organized and maintainable while also simplifying the View by separating it into two parts. 
+Django uses MVT (Model View Template) architecture which is a variation of the traditional MVC (Model View Controller) architecture. Similar to the MVC, the model in MVT represents the data and business logic. The view in MVT is split into two parts: the template displays the data, and the view handles the user input and interacts with the model to retrieve and manipulate the data. Similarly to the MVC, MVT separates layers and keeps the code organized and maintainable, while also simplifying the view by separating it into two parts. 
 \newline
 
-The MVT architecture allows the developer to work on each layer in parallel and then integrate them efficiently. In our project, we used this feature to build and test the three main functions: user authentication process, creation of surveys by the feedback gatherers, and submission of surveys by the respondents. 
+The MVT architecture allows the developer to work on each layer in parallel and then integrate them efficiently. In our project, we used this feature to build and test the three main functions: user authentication process, creation of surveys by the feedback gatherers, and submission of surveys by the respondents. We were able to implement one functionality at a time while working on all of the layers in parallel. One member created the HTML templates while another worked on the models to store the data. Views were then set up followed by finalizing the templates to display the data. Using this method, we were able to develop our web application much faster.
 \newline
 
-For the user registration and authentication processes, we first created the template for the user to register and log in, and the table in the model to store the user information data. Views were then set up to handle the user input and to retrieve and manipulate the data. Finally, the template was finalized to display the data.
+The MVT architecture allows the developers to make modifications that will not affect the entire model. During development, many changes were required on the templates to enhance the user interface. It was beneficial that the changes in the HTML and CSS only affected the templates and not the entirety of the web application. Many adjustments were also made in the views as well including setting page restrictions for authentication and changing the interactions on the models for submitting data using the forms. Again, the MVT architecture made this process simpler by isolating the modifications.
+\newline
 \newpage
+One major advantage of the Django MVT architecture is the simplified testing process. Since all layers of the application are structurally defined, we were able to test our three main functionalities as we were developing them. For example, for the creation of surveys, the clearly defined structure of the template, model, and view helped us to run tests efficiently. Using an account, we created survey and submitted them and checked the database to verify that the data from the surveys was accurately stored. The clear structure also allowed for efficient debugging and modifications because we knew which template, model, and view were responsible for which functionality.
+\newline
+
+
+\begin{figure}[h]
+        \centering
+        \includegraphics[width=0.80\textwidth]{mvt.png}
+        \caption{MVT Architecture}
+    \end{figure}
+
+    \newpage
     
 \subsection{Observer and Factory design patterns. Explain in detail the usability of these two patterns for your specific application. Include the complete class diagram for each pattern. Also provide the algorithms corresponding to the pattern’s important methods. For each class, provide the data types of the attributes and prototypes of the methods.}
+
+\textbf{Observer Patterns}
+
+Similar to the MVC architecture, the views in Django’s MVT architecture are the dependent objects while the models are the independent objects. In our application, the observer pattern can be used to manage the relationship between the views and the models by notifying the different views whenever there are changes in the model’s data. This can be useful since there are multiple views that are affected by the changes in the data. For example, when a user adds or deletes a survey, this change would be reflected in the survey model. All of the views related to this model would be notified of these changes. The user profile template would display the addition or the deletion of a survey while a new survey page template would be created or deleted. The observer model can be useful in maintaining consistency between the related objects and keeping them up to date. 
+\newline
+\hfill \break
+\textbf{Factory Patterns}
+
+In our application, the factory design pattern can be used to store the family of objects in one class and to keep the code of building the objects hidden from the clients. For example, a factory class can be used for the creation of surveys, which is a family of related objects. The factory class would be the centralized class that creates a family of different surveys. This results in consistent products for all clients while having a highly maintainable program with no duplication of code. The factory class would return a survey depending on the questions and the type of answers selected by the client. The factory design pattern is useful for our application because we have many users that need the same family of objects which is the survey.
+
+
 \linebreak
     \hfill \break
     
+\newpage
 \subsection{Provide the class diagram of the whole system by incorporating the two design patterns.}
 \linebreak
     \hfill \break
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \section{Software Construction}
 \subsection{Submit the screenshot of the entire structure of the code within the web framework.}
@@ -226,17 +273,15 @@ For the user registration and authentication processes, we first created the tem
     
 \subsection{GitHub link of the entire program. All students must contribute equally to the programming part. The commit log of each student will be checked within GitHub. Website builders, such as Wordpress, are not allowed.}
 \linebreak
-    \hfill \break
 \url{https://github.com/zachary-huber/feedback-app}
 \hfill \break
 
 \subsection{Link of your Web-based application. The application should be accessible online and runnable.}
 \linebreak
-    \hfill \break
-\url{https://www.viewnote.app/}
+\url{https://commentcorner.ngrok.app/}
 \hfill \break
 
-
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Technical Documentation}
@@ -245,45 +290,65 @@ For the user registration and authentication processes, we first created the tem
    \item Javascript
    \item HTML
    \item CSS
-   \item PHP
+   \item SQL
+   \item Python
 \end{enumerate}
+\hfill
+\newline
+
 
 \subsection{List of reused algorithms and programs. Include their sources.}
 \begin{enumerate}
-   \item  Django web and database frameworks:
-   \begin{description}
-     \item \url{https://docs.djangoproject.com/en/4.1/}
-   \end{description}
-   \item thing
+   \item  Django web and database frameworks - \url{https://docs.djangoproject.com/en/4.1/}
+   \begin{itemize}
+     \item User Authentication - built in
+     \begin{itemize}
+         \item Login
+         \item Logout
+         \item Register
+     \end{itemize}
+   \end{itemize}
+   \item QR code - \url{https://api.qrserver.com/v1/create-qr-code/?data=data}
+    \item Form Generation - made by scratch
+    \item Survey Generation - made by scratch
 \end{enumerate}
+\newpage
 
 \subsection{List of software tools and environments. Provide briefly their benefits specifically for your application.}
 \begin{enumerate}
    \item Django
    \begin{description}
-     \item The main functionality of our web application requires a web framework with a database that can be used to store and load user’s data such as their surveys and responses. Django allows quick and efficient development of our web application by providing the framework and the modules. The nuisance of creating and connecting to a database is already implemented in Django. We were able to quickly test the storage and loading of our data in the early stages of development. Migration of our data was also made simple by Django because it only requires running a few commands in the terminal. 
+     \item The main functionality of our web application requires a web framework with a database that can be used to store and load a user’s data such as their surveys and responses. Django allows quick and efficient development of our web application by providing the framework and the modules needed. The nuisance of creating and connecting to a database is already implemented in Django, so we were able to quickly test the storage and loading of our data in the early stages of development. Migration of our data was also made simple by Django because it only requires running a few commands in the terminal. 
    \end{description}
+   \item[]
    \item ngrok
-   \item mySQL
+    \begin{description}
+        Ngrok provides web application hosting services with a publicly accessible URL. It is a free tool which allows secure tunneling from a public URL to our local application. This feature of ngrok allowed us to test the display of data on the templates after the extraction and loading of data from the model layer directly on the public URL. It was helpful for all of the members to view the updates in real time on the public URL.
+    \end{description}
+    \item[]
+   \item MySQL
+   \begin{description}
+       The data in the model layer of Django was migrated to the MySQL database. The MySQL database was used to store our user data because it is a reliable, free, and open-source database. Being the most popular database, it is a secure and scalable with the ability for complete customization. Any changes made to our model could be handled by the MySQL database. Also, the assurance of continuous uptime allowed us to consistently work on our application.
+   \end{description}
 \end{enumerate}
-
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \section{Acceptance Testing: select test cases for both user roles. The sign-in and sign-up are excluded from testing.}
 \subsection{Correctness testing using four test cases (screenshots of both inputs and outputs).}
 \newline
-\hfill
 
 \textbf{Feedback gatherer:}
 \begin{itemize}
     \item[] Input: Feedback gatherer creates a survey by selecting the types of answers and entering the questions. 
-    \item[] Output: When they click the “Create Survey” button, a QR code is generated.
-    \item[] Input: Feedback gatherer scans the QR code.
-    \item[] Output: Feedback gatherer is taken to the correct survey displaying the correct questions.
-    \item[] Input: Feedback gatherer clicks on one of the past surveys.
-    \item[] Output: Feedback gatherer can view the responses.
-    \item[] Input: Feedback gatherer clicks the delete button on one of the past surveys.
-    \item[] Output: The past survey is deleted.
+
+Output: When they click the “Create Survey” button, a QR code is generated.
+
+Input: Feedback gatherer clicks on one of the past surveys.
+
+Output: Feedback gatherer can view the responses to the correct survey.
 \end{itemize}
 
 \hfill \break
@@ -295,48 +360,46 @@ For the user registration and authentication processes, we first created the tem
     \item[] Output: Respondent is taken to the thank you page.
 \end{itemize}
 
-\hfill \break
 \newpage
 
 \subsection{Robustness testing using four test cases (screenshots of both inputs and outputs).}
 \newline
-\hfill
 
 \textbf{Feedback gatherer:}
 
 \begin{itemize}
-    \item[] Input: Feedback gatherer clicks the “Create Survey” button without entering anything.
-\item[] Output: Feedback gatherer is shown a warning to select a type of answer and to enter a question.
-\item[] Input: Feedback gatherer clicks the “Create Survey” button without entering a question after selecting a type of answer.
-\item[] Output: Feedback gatherer is shown a warning to enter a question.
-\item[] Input: Feedback gatherer attempts to close the browser or to return to the main page while creating a survey.
-\item[] Output: Feedback gatherer is shown a warning that the entered information will be lost.
+    \item[] Input: Feedback gatherer tries to go to the sign up page while already logged in.
+
+Output: Feedback gatherer is redirected to landing page.
+
+Input: Feedback gatherer tries to go to the login page while already logged in.
+
+Output: Feedback gatherer is redirected to landing page.
 \end{itemize}
 \newline 
 \hfill \break
 
 \textbf{Respondent:}
 \begin{itemize}
-    \item[] Input: Respondent clicks the submit button without answering all of the questions.
+    \item[] Input: Respondent tries to go the landing page while not logged in.
 
-Output: Respondent is shown a warning to answer all of the questions.
+Output: Respondent is redirected to login page.
 
-Input: Respondent attempts to leave the survey without submitting.
+Input: Respondent tries to go the create survey page while not logged in.
 
-Output: Respondent is shown a warning that the entered information will be lost.
+Output: Respondent is redirected to login page.
 
 \end{itemize}
 \newpage 
 
 \subsection{Time-eﬀiciency testing of two functions (with screenshots). Indicate the method you used to measure the time.}
 \newline
-\hfill \break
 
 \textbf{Feedback gatherer:}
 \begin{itemize}
     \item[] Create survey: Time taken for the survey data to be stored in the database and the QR code to be generated.
 
-View responses: Time taken for the response data to be shown to the feedback gatherer after clicking a past survey. 
+View responses: Time taken for the response data to be shown to the feedback gatherer after clicking a past survey.
 \end{itemize}
 \newline
 \hfill \break
@@ -347,8 +410,11 @@ View responses: Time taken for the response data to be shown to the feedback gat
     \item[] Go to survey: Time taken for the survey to be loaded from the database when the QR code is scanned.
 
 Submit responses: Time taken for the response data to be stored in the database and to show the respondent that the responses were successfully submitted.
-\end{itemize}
 
+\end{itemize}
+\newline
+\hfill \break
+Method: Use inspect network in Google Chrome.
 
 
 \addtolength{\textheight}{-12cm}
