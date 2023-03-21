@@ -36,7 +36,24 @@ abstract class responses
 	protected response_id, form_id, user_id: int
 	protected response_json, created_at, updated_at: string
 	public void saveResponses()
-	{ }
+	{ 
+		get_list_of_response_elements()
+		make_empty_JSON_object()
+		for each item in response elemnts list
+		{
+			get_response_heading()
+			get_response_input()
+			get_response_value()
+			check_response_input_type()
+			for every radio item
+			{
+				refine_radio_input_type()
+			}
+			push_response_heading_to_JSON()
+			push_response_value_to_JSON()
+			return(JSON_object)
+		}
+	}
 }
 class Responses1 extends responses
 {
@@ -50,7 +67,24 @@ class Responses1 extends responses
 		updated_at = "updated_at1"
 	}
 	public void saveResponses()
-	{ }	
+	{ 
+		get_list_of_response_elements()
+		make_empty_JSON_object()
+		for each item in response elemnts list
+		{
+			get_response_heading()
+			get_response_input()
+			get_response_value()
+			check_response_input_type()
+			for every radio item
+			{
+				refine_radio_input_type()
+			}
+			push_response_heading_to_JSON()
+			push_response_value_to_JSON()
+			return(JSON_object)
+		}
+	}	
 }
 .
 .
@@ -67,6 +101,23 @@ class ResponsesN extends responses
 		updated_at = "updated_atN"
 	}
 	public void saveResponses()
-	{ }	
+	{ 
+		get_list_of_response_elements()
+		make_empty_JSON_object()
+		for each item in response elemnts list
+		{
+			get_response_heading()
+			get_response_input()
+			get_response_value()
+			check_response_input_type()
+			for every radio item
+			{
+				refine_radio_input_type()
+			}
+			push_response_heading_to_JSON()
+			push_response_value_to_JSON()
+			return(JSON_object)
+		}
+	}	
 }
 
