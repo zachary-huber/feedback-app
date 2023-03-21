@@ -36,7 +36,11 @@ abstract class AuthUser
 	protected password, last_login, username, first_name, last_name, email, date_joined: string
 	protected is_superuser, is_staff, is_active: int
 	public void register()	
-	{ }
+	{ 
+		take_info_entered_by_the_user()
+		validate()
+		create_account()
+	}
 }
 class AuthUser1 extends AuthUser
 {
@@ -54,7 +58,11 @@ class AuthUser1 extends AuthUser
 		is_active = 1
 	}
 	public void register()
-	{ }
+	{ 
+		take_info_entered_by_the_user()
+		validate()
+		create_account()
+	}
 }
 .
 .
@@ -75,8 +83,11 @@ class AuthUserN extends AuthUser
 		is_active = 1
 	}
 	public void register()
-	{ }
+	{ 
+		take_info_entered_by_the_user()
+		validate()
+		create_account()
+	}
 }
-
 
 
