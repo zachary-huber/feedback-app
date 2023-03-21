@@ -3,7 +3,7 @@
 
 ## Available Scripts
 
-In the project directory (.../django/dlocal/dlocal/ you can run:
+In the project directory (.../django/dlocal/dlocal/) you can run:
 
 ### `python manage.py runserver`
 
