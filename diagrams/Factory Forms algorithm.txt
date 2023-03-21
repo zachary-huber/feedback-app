@@ -36,7 +36,22 @@ abstract class forms
 	protected form_id, user_id, is_active: int
 	protected title, description, created_at, updated_at, form_json: string
 	public void saveFormEditor()
-	{ }
+	{ 
+		make_empty_list()
+		make_new_list_with_form_elements()
+		get_form_title()
+		push_form_title_to_empty_list()
+		for each element in form elements
+		{
+			get_form_element_select_value()
+			get_form_element_input_value()
+		}
+		push_input_id()
+		push_fields_type()
+		push_field_name_question()
+		convert_to_JSON_string()
+		return(JSON_string)
+	}
 }
 class forms1 extends forms
 {
@@ -52,7 +67,22 @@ class forms1 extends forms
 		form_json = "form_json1"
 	}
 	public void saveFormEditor()
-	{ }
+	{ 
+		make_empty_list()
+		make_new_list_with_form_elements()
+		get_form_title()
+		push_form_title_to_empty_list()
+		for each element in form elements
+		{
+			get_form_element_select_value()
+			get_form_element_input_value()
+		}
+		push_input_id()
+		push_fields_type()
+		push_field_name_question()
+		convert_to_JSON_string()
+		return(JSON_string)
+	}
 }
 .
 .
@@ -71,7 +101,22 @@ class formsN extends forms
 		form_json = "form_json1"
 	}
 	public void saveFormEditor()
-	{ }
+	{ 
+		make_empty_list()
+		make_new_list_with_form_elements()
+		get_form_title()
+		push_form_title_to_empty_list()
+		for each element in form elements
+		{
+			get_form_element_select_value()
+			get_form_element_input_value()
+		}
+		push_input_id()
+		push_fields_type()
+		push_field_name_question()
+		convert_to_JSON_string()
+		return(JSON_string)
+	}
 }
 
 
